@@ -1,0 +1,60 @@
+﻿@charset "utf-8";
+html, body {
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+}
+body{
+	
+	height: auto;
+}
+/*移动端*/
+* {
+	box-sizing: border-box;
+}
+body {
+	background: #FFF;
+}
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, pre, dl, dd, th, td, form, input, select, textarea, div, output, section, a, ul, li {
+	padding: 0;
+	margin: 0;
+	zoom: 1;
+}
+textarea {
+	overflow: auto;
+	resize: none
+}
+table {
+	border-collapse: collapse;
+}
+img {
+	border: none;
+	vertical-align: top;
+	box-sizing: border-box;
+}
+em {
+	font-style: normal
+}
+a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+li {
+	list-style: none;
+}
+.clear {
+	zoom: 1
+}
+.clear:after {
+	content: "";
+	clear: both;
+	display: block
+}
+.fl {
+	float: left
+}
+.fr {
+	float: right
+}
+
+
