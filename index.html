@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		padding: 0;margin:0;
+	}
+	body{
+		font-size: 50px;font-weight: bold;
+	}
+		.blueClass{
+			color: red
+		}
+		#blueId{
+			color:blue;
+		}
+		#redId{
+		color:red;	
+		}
+		#eventButton{
+			border:none;background: green;border:1px solid black;color: white;border-radius:10px;height:40px;width: 100px;text-shadow: 2px 2px 2px black;font-size: 14px;font-family: "微软雅黑";box-shadow: 2px 2px 12px black;line-height: 40px;cursor: pointer;
+		}
+	</style>
+	<script>
+   function c(){console.log(arguments[0])};
+   function a(){alert(arguments[0]);}
+   function w(){document.write(arguments[0])};
+  
+function id(id){
+	var s;
+	return document.getElementById(id);
+}
+window.onload=function(){
+var eventButton=id('eventButton');
+var selectDom=id('select');
+eventButton.onclick=function(){
+
+	var newOption=new Option('Option text','Option value');
+	selectDom.add(newOption,undefined);
+	c('添加成功');
+
+}
+
+}
+
+
+</script>
+</head>
+<body>
+<input type="button" name="" value="点我改变" id="eventButton">
+<div class="enitable" id="richedit" contenteditable>
+	s4d54a6s
+</div>
+</body>
+</html>
+
