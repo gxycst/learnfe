@@ -13,6 +13,10 @@ Private->私有(针对机密的公司项目)
 Initialize this repository with a README->一般选择上，下载文件是会有readme文件介绍
 Add.gitgnore:规定哪些文件不能被操作(网站默认设置就行)
 Add a license:是否添加许可证(网站默认设置就行)
+<<<<<<< HEAD
+=======
+
+>>>>>>> ea45b36bba84fd86ddda719894d38f4c5e11d55b
 --------------------------
 ★★★★★创建或者克隆仓库和初期设置:
 
