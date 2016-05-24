@@ -1,1 +1,125 @@
-koala-app.com/index-zh.html
+// less不会保留的注释
+/*会保留在css中*/
+
+//1.定义变量 
+@varWidth:300px;
+//使用变量 
+element{
+	width:@varWidth;
+}
+
+//2.混合
+.border1px{border:1px solid black;}
+
+.box{
+	width:@someWidth;
+	height:@someHeight;
+	.border1px;//就会添加border:1px solid black;没有括号
+}
+
+//带参数的混合
+
+.border02Px(@borderArguments){
+	border:@borderArguments solid black;
+}
+
+//使用
+.element{
+	.border02Px(10px);//border:10px solid black;
+}
+
+//带默认值的参数
+.border02Px(@borderArguments:10px){
+border:solid green @borderArguments;
+}
+
+.element{
+	.border02Px();//.border02Px(20px);
+}
+
+//混合举例
+.borderRadius(@radius:5px){
+	-webkit-border-radius:@radius;
+	-moz-border-radius:@radius;
+	border-radius:@radius;
+}
+.testborderRadius{
+	.borderRadius(1px);
+}
+
+//css三角
+.cssSanJiao{
+	width: 0;
+	height: 0;
+	overflow: hidden;//解决ie6最小高度
+	border-width: 10px;
+	border-color: transparent transparent red transparent;
+	border-style: dashed dashed solid dashed;//解决ie出现黑色实线问题
+}
+
+//匹配模式,类似于if,我们通过
+.sanjiaoCssFunc(top,@color){
+	border-color:transparent transparent @color transparent;
+	border-style:dashed dashed dashed solid dashed;
+}
+.sanjiaoCssFunc(bottom,@color){
+	border-color:@color transparent transparent  transparent;
+	border-style: solid dashed dashed dashed  dashed;
+}
+.sanjiaoCssFunc(left,@color){
+	border-color:transparent @color transparent  transparent;
+	border-style:dashed solid  dashed  dashed;
+}
+.sanjiaoCssFunc(right,@color){
+	border-color:transparent transparent transparent @color ;
+	border-style:dashed dashed dashed dashed solid;
+}
+
+.sanjiaoCssFunc(@_,@width:5px,@color:red){
+border-width:@width;
+height: 0;
+width: 0;
+overflow: hidden;
+}
+.divObjTest{
+.sanjiaoCssFunc(right,blue);//blue不要传字符串加引号
+}
+//@_表示必须编译时带上的代码段,后面的参数也要写完全.如果所有参数都要改变,可以直接用@arguments
+
+
+//嵌套
+.wrap{
+	height: 100px;
+	#inner{
+		width: 100px;
+		a{
+			color:blue;
+		}
+	}
+	#innerBrother{
+		color:blue;
+	}
+}
+
+
+
+//避免编译  ~'内容'
+.noWith{
+	width:~'calc(300px-20px)'
+}
+
+
+// &号代表他自身
+
+div{
+height:1px;
+p{
+	width:1px;
+	&:hover{
+color:red
+	}
+}
+}
+
+
+@import 'url.css|less';//引入外部css或者less

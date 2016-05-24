@@ -1,0 +1,10 @@
+@charset "utf-8";
+.noWith {
+  width: calc(300px-20px);
+}
+.noWith p {
+  height: 10px;
+}
+.noWith p:hover {
+  height: 1px;
+}
