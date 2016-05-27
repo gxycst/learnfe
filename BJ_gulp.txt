@@ -1,0 +1,40 @@
+1.安装好node之后安装npm install -g gulp
+2.然后到项目根目录再安装一遍 npm install gulp --save-dev
+3.新建gulpfile.js
+4.gulp插件安装
+npm install gulp-sass --save-dev
+5.加载插件
+var gulp=require('gulp'),
+	sass=require('sass');
+	
+6.gulp使用
+
+task这个API用来创建任务，在命令行下可以输入 gulp task 来执行gulp的任务。
+watch这个API用来监听任务。
+src这个API设置需要处理的文件的路径，可以是多个文件以数组的形式[main.scss, vender.scss]，也可以是正则表达式/**/*.scss。
+dest这个API设置生成文件的路径，一个任务可以有多个生成路径，一个可以输出未压缩的版本，另一个可以输出压缩后的版本。
+
+
+
+sass编译
+npm install gulp-sass --save-dev 
+自动添加浏览器前缀
+npm install gulp-autoprefixer --save-dev 
+css压缩
+npm install gulp-minify-css  --save-dev
+js代码校验
+npm install gulp-jshint  --save-dev
+js合并
+npm install gulp-concat  --save-dev
+js压缩
+npm install gulp-uglify  --save-dev
+图片压缩
+npm install gulp-imagemin  --save-dev
+更改提醒
+npm install gulp-notify  --save-dev
+重命名
+npm install gulp-rename  --save-dev
+自动刷新
+npm install gulp-livereload  --save-dev
+图片缓存，只有图片替换了才压缩
+npm install gulp-cache --save-dev

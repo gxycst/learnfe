@@ -1,1 +1,160 @@
-@charset 'utf-8';
+//compass地址
+//gem sources --add http://gems.ruby-china.org/ --remove https://rubygems.org/
+//$声明变量
+$borderColor:#1875e7;
+$numberWidht:100;
+//变量可以计算
+div{
+	background: $borderColor;
+	border:1px solid #{$borderColor};
+	width: (100px/2);
+	height: 50px+100px;
+	right:$numberWidht * 15%;
+}
+
+//变量嵌套
+.father{
+	z-index: 1;
+	h2{
+		color:red
+		}
+}
+//&代替父级
+a{
+	&:hover{
+		color:green
+	}
+}
+
+//继承写法
+.class{
+	border:1px solid #ddd;
+}
+.classSon{
+	@extend .class;
+	font-size:120%;
+}
+
+//default表示默认值,如果需要覆盖,则在默认值之前重写
+$brand-primary : darken(#428bca, 6.5%) !default; // #337ab7
+$btn-primary-color : #fff !default;
+$btn-primary-bg : $brand-primary !default;
+$btn-primary-border : darken($btn-primary-bg, 5%) !default;
+
+
+.sectionBtn{
+	background:$btn-primary-color
+}
+
+
+
+
+//局部变量和全局变量(跟js类似)
+
+$color:orange !default;//全局变量
+.block{
+	color:$color;
+}
+
+
+em{
+	$color:red;//局部变量
+	a{
+		color:$color;
+	}
+}
+
+span{
+	color:$color;
+}
+
+//标签嵌套
+nav {
+  a {
+    color: red;
+
+    header & {// header nav a
+      color:green;
+    }
+  }  
+}
+
+//属性嵌套
+.box{
+	border:{
+		top:1px solid red;
+		bottom:1px solid green;
+	}
+}
+
+//伪类嵌套
+.clearfix{
+	&:before,&:after{
+		content:'';
+		display:table;
+	}
+	&:after{
+		clear:both;
+		overflow: hidden;
+	}
+}
+//混合宏-声明混合宏@mixin
+@mixin border-radius{
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+//带参数的混合宏
+@mixin border-radius($radius){
+	-webkit-border-radius:$radius;
+	border-radius:$radius;
+}
+
+//复杂的混合宏,多个参数用...代替
+.divBoxShadow{
+	@include border-radius(10px);
+}
+
+//继承,他会自动合并选择器
+
+.btn {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #f36;
+  color: #fff;
+  @extend .btn;
+}
+
+.btn-second {
+  background-color: orange;
+  color: #fff;
+  @extend .btn;
+}
+
+//占位符
+%ellipsis{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+}
+%howmuchlineshow{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp:2;
+	-webkit-box-orient:vertical;
+}
+
+p{
+	@extend %ellipsis;
+}
+
+//宏在可以传参数时使用,继承在不传参数时用,占位符是独立存在的代码块
+
+//through 包含end(3),to不包含3
+@for $i from 1 through 3{
+	.item-#{$i}{width:2rem * $i}
+}
