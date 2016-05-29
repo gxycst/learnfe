@@ -2,7 +2,7 @@
 npm install -g yo grunt-cli bower
 然后到Discovering generators安装相应的generator包
 安装完成之后,再安装 npm install-g generator-projectName
-npm install-g generator-angular等等
+npm install -g generator-angular等等
 
 
 npm ~版本号,表示多少版本号以上,如果本地版本为~0.1.1,当有新版本时不会更新
