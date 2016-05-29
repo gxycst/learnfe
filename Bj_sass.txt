@@ -1,0 +1,96 @@
+使用compass watch监控时，需要先把文件都放在对应目录下，然后再执行compass命令
+css中原生的import尽量不要用,1必须放在代码最前面，2对性能不利，在下载时代码处于阻塞的过程中
+//&代替父级
+@charset "utf-8";可以编译中文
+@minx youFunctionName($arguments){attr:$arguments;}
+调用时用 @include youFunctionName('arguments');
+sass无法继承嵌套选择器，比如{@extend .a .b;}
+继承会他会自动合并选择器,把父级所有代码都继承过来，有时会有冗余代码产生，用%代替,不过%会单独另外多写一个选择器，如果想单独调用某一段css，封装成一个mixin函数就可以
+@at-root既可以表达关系，又能放在最顶端
+//总结宏在可以传参数时使用,继承在不传参数时用,占位符是独立存在的代码块
+compass模块
+用定制化的normalize替换粗暴的reset模块
+安装gem install compass-normalize
+在config.rb中配置 require 'compass/import-once/activate'//避免重复引入,如果非要引入两次，则在文件名后加个!,windows下并没有卵用
+compass常用模块
+//css3模块
+@import "compass/css3";
+div{
+	@include box-shadow();
+	@include transition(1s);
+}
+typography模块,文字超出变成省略号,图片变URI等
+//雪碧图合成.三步
+@import "compass/utilities/sprites";
+@logo-sprite-dimensions:true;//是否为雪碧图的每个类设置和图片一样大的宽高
+$logo-layout:horizontal//横向合并
+@import "csssprites/*.png";//compass在编译时会选取最后一个目录名
+
+@include all-csssprites-sprites();//csssprites为文件夹名
+//当图片以xxx_hover,xxxx_active命名时，compass就会自动生成伪类的样式
+
+
+//另一个类想引用雪碧图的某个小图，可以用{@include logo-sprite('图片名')}就会生成和雪碧图小类一模一样的样式
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body{
+	font-family:$bodyFont;
+	@include color('red');
+}
+.error{
+	color:red
+}
+.errorImports{
+	@extend .error;
+	border:1px solid black;
+}
+%wordEllipsisa{
+	overflow: hidden;white-space: nowrap;text-overflow:ellipsis;
+}
+@mixin wordEllipsis(){
+overflow: hidden;white-space: nowrap;text-overflow:ellipsis;	
+}
+p{
+	width:100px;
+	@include wordEllipsis();
+}
+
+@mixin meadiaCss($width:50%){
+	@media (min-width:768px){
+		width:$width;
+		float: left;
+	}
+}
+.float{
+	@include meadiaCss();
+}
+
+
+.father{
+	@at-root{
+		.son1{
+		color:red 
+	}
+	.son2{
+		color:green
+	}
+	}
+}
