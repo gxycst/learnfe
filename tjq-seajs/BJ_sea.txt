@@ -1,0 +1,23 @@
+1.引入sea
+2.使用
+2.1.define()函数和exports对外提供接口的对象
+如果这是模块一  moduleA.js
+define(function(require,exports,module){
+	function youFunctionName(){
+		//code
+	}
+	exports.youFunctionName=youFunctionName;
+})
+2.2.seajs.use();//使用模块
+//require,exports,module三个参数可有可无,不可更改参数名
+
+	<script src="sea.js"></script>
+	<script>
+		seajs.use('modulePath(绝对路径或相对路径)',function(ex){
+//modulePath为模块的路径,注意sea的默认根目录是sea.js文件所在的目录;此处的ex可以随便写,这个参数就是代表引入的模块
+		ex.youFunctionName();
+
+		})
+	</script>
+2.3解决依赖
+require('需要依赖的文件路径');如果该文件也是一个模块,那么require返回值就是该模块的exports.

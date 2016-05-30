@@ -3,8 +3,8 @@ npm install -g yo grunt-cli bower
 ***********yo(搭架子)***********
 然后到yomen官网中的Discovering generators安装相应的generator包
 安装完成之后,再安装 npm install-g generator-projectName
-npm install -g generator-angular等等
 然后使用 yo angular proname创建项目
+npm install -g generator-angular等等
 ***********bower(安装各种库的)***********
 bower install jquery
 bower install bootstrap
