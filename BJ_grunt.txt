@@ -32,6 +32,9 @@ Contrib-copy——复制文件、文件夹
 Contrib-concat——合并多个文件的代码到一个文件中
 karma——前端自动化测试工具
 
+linux yomen没有权限时用  chmod g+rwx /root /root/.config /root/.config/configstore
+npm install -g generator-karma(linux下安装)
+
 
 
 gurnt安装后简单使用
