@@ -1,53 +1,45 @@
 function l(){console.log(arguments[0]);}
-// extend BaiDu->原型式继承
-function inhertObject(o){
-//声明一个过渡函数对象.o为一个prototype或者一个new出来的实例
+// extend BaiDu||原型式继承
+function inhertObject(somePrototype){
 	function F(){};
-//过渡对象的原型继承父对象
-	F.prototype=o;
-//返回过渡对象的一个实例,该实例的原型继承了父对象
+	F.prototype=somePrototype;
 	return new F();
 }
-// extend BaiDu-> 寄生组合继承
-function inheritPrototype(subClass,superClass){
-	//复制一份父类的原型副本保存在变量中
-	var p=inhertObject(superClass);
-	p.constructor=subClass;//修正指向
-	subClass.prototype=p;//设置子类原型
+// 寄生组合继承,虽然开销小，不过要传一个原型再使用,不如浅拷贝+call实际
+function inheritPrototype(sonClass,fatherClassPrototype){
+	var p=inhertObject(fatherClassPrototype);
+	p.constructor=sonClass;
+	sonClass.prototype=p;
+}
+function inheritExtend(sonClass,fatherClass){
+	var p=new fatherClass();
+	p.constructor=sonClass;
+	sonClass.prototype=p;
 }
 
-// extend BaiDu->多继承(浅拷贝)
+//单继承(浅拷贝)
 function extend(target,source){
 	for(var property in source){
 		target[property]=source[property];
 	}
 	return target;
 }
-var books={
-	name:"名字",
-	alike:['1','2','3']
+//多继承
+function moreExtend(){
+	var i=1,
+	len=arguments.length,
+	target=arguments[0],
+	arg;
+	for(;i<len;i++){
+		arg=arguments[i];
+		for(var property in arg){
+			target[property]=arg[property];
+		}
+	}
 }
+//综上继承到方法可以用单继承和寄生组合继承
 
-var antherBook={
-	color:"颜色",
-	name:"姓名",
-	alike:['a','b','c']
-}
-extend(books,antherBook);
-l(books);
 
-/*function superClass(name){
-	this.name=name;
-	this.colors=['red','blue','green'];
-}
-superClass.prototype.getName=function(){
-	l(this.name);
-}
-function subClass(name,time){
-	superClass.call(this,name);
-	this.time=time;
-}
-inheritPrototype(subClass,superClass);
-subClass.prototype.getTime=function(){
-	l(this.time);
-}*/
+
+
+
