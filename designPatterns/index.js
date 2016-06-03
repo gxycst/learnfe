@@ -36,10 +36,10 @@ function moreExtend(){
 			target[property]=arg[property];
 		}
 	}
+	return target;
 }
-//综上继承到方法可以用单继承和寄生组合继承
 
 
-
+//fn.apply(,数组或类数组);fn.call(,参数1,参数2,参数3);
 
 
