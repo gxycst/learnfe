@@ -28,35 +28,7 @@ I'm test word.
 var myObj=id('test');
 var fatherDiv=id('fatherDiv');
 function id(id){return document.getElementById(id);}
-function dragFree(obj) {
-	
-	    /* function preventDefaultEvent(ev){
-            var ev=ev||event;
-            ev.preventDefault?ev.preventDefault():ev.returnValue=false;
-         }*/
-		obj.onmousedown = function(ev) {
-			/* document.addEventListener?document.addEventListener('mousemove',preventDefaultEvent,false):document.attachEvent('onmousemove',preventDefaultEvent);*/
-			var ev = ev || event;
-			var disX = ev.clientX - this.offsetLeft;
-			var disY = ev.clientY - this.offsetTop;
 
-			if (this.setCapture ) {
-				this.setCapture();
-			}
-			document.onmousemove = function(ev) {
-				var ev = ev || event;
-				obj.style.left = ev.clientX - disX + 'px';
-				obj.style.top = ev.clientY - disY + 'px';
-			}
-			document.onmouseup = function() {
-				document.onmousemove = document.onmouseup = null;
-				if (obj.releaseCapture ) {
-				 	obj.releaseCapture();
-				}
-			}
-		}
-	}
-	dragFree(myObj);
 </script>
 </body>
 	</html>

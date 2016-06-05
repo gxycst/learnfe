@@ -112,7 +112,7 @@ function ajax(method, url, data, success) {
 			if ( xhr.status == 200 ) {
 				success && success(xhr.responseText);
 			} else {
-				alert('出错了,Err：' + xhr.status);
+				console.log('出错了,Err：' + xhr.status);
 			}
 		}
 
@@ -149,11 +149,11 @@ function dragFree(obj) {
             ev.preventDefault?ev.preventDefault():ev.returnValue=false;
          }
 		obj.onmousedown = function(ev) {
-			 document.addEventListener?document.addEventListener('mousemove',preventDefaultEvent,false):document.attachEvent('onmousemove',preventDefaultEvent);//mouseup设置为null时已经取消函数
+			 document.addEventListener?document.addEventListener('mousemove',preventDefaultEvent,false):document.attachEvent('onmousemove',preventDefaultEvent);//防止选中文字时无法拖拽该元素
 			var ev = ev || event;
 			var disX = ev.clientX - this.offsetLeft;
 			var disY = ev.clientY - this.offsetTop;
-			//设置全局捕获(和事件捕获不一样，这是把所有后续事件拉到自己身上来，防止有文字被选中时低版本IE拖拽出问题)
+			//设置全局捕获(和事件捕获不一样，这是把所有后续事件拉到自己身上来，防止有文字被选中时低版本IE拖拽出问题,注意当拖拽元素当中有表单时，设置setCaptrue会导致表单无法输入，所以需要去掉)
 			if (this.setCapture ) {
 				this.setCapture();
 			}
@@ -612,6 +612,13 @@ alert('啊啊啊啊');
 })
 */
 function moveofSpeed(obj, json, fn) {
+	function css(obj, attr) {
+	if (obj.currentStyle) {
+		return obj.currentStyle[attr];
+	} else {
+		return getComputedStyle(obj, false)[attr];
+	}
+}
 	clearInterval(obj.iTimer);
 	var iCur = 0;
 	var iSpeed = 0;
@@ -642,13 +649,7 @@ function moveofSpeed(obj, json, fn) {
 		}		
 	}, 10);
 }
-function css(obj, attr) {
-	if (obj.currentStyle) {
-		return obj.currentStyle[attr];
-	} else {
-		return getComputedStyle(obj, false)[attr];
-	}
-}
+
 
 //css3版本运动框架
 var tween = {
