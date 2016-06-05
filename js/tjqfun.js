@@ -20,25 +20,40 @@ function getClassStyle(obj,name){
 ==>alert(getElementsByClassName(Ull,'li','tjq').length)#############*/
 function getElementsByClassName(oParent,tagName,sClass){
 	var aResult=[];
-	var aEls=oParent.getElementsByTagName(tagName);
-	for (var i = 0; i < aEls.length; i++) {
-		var aClassName=aEls[i].className.split(' ');
+	var elementResult=oParent.getElementsByTagName(tagName); 
+	for (var i = 0; i < elementResult.length; i++) {
+		var aClassName=elementResult[i].className.split(' ');
 		for(var j=0;j<aClassName.length;j++){
-			if(aClassName[j] == sClass){aResult.push(aEls[i]);break;
+			if(aClassName[j] == sClass){aResult.push(elementResult[i]);break;
 			}
 		}
 	};
 	return aResult;
 }
-
-/*######获取元素到页面的绝对距离,返回值为dis.left或者dis.top==>alert(getPosition(Ull).top);默认不带px######*/
+/*######获取元素到页面根部的绝对距离,返回值为dis.left或者dis.top==>alert(getPosition(Ull).top);默认不带px######*/
 function getPosition(obj){
 	var dis={left:0,top:0};
 	while(obj){
 		dis.top+=obj.offsetTop;
 		dis.left+=obj.offsetLeft;
 		obj=obj.offsetParent;
-	}return dis;
+	}
+	return dis;
+}
+//设置元素属性||可操作自定义属性
+function changeElementProp(howDo,obj,oldProp,newProp){
+	switch (howDo){
+		case 'get' :
+		return obj.getAttribute('oldProp');
+		break;
+		case 'set' :
+		obj.setAttribute(oldProp,newProp);
+		break;
+		case 'remove':
+		obj.removeAttribute(oldProp);
+		break;
+	}
+
 }
 
 /*###########获取某个点的绝对距离(包括滚动条在内，返回值默认不带px单位)######getScroll().y;*/
@@ -103,71 +118,74 @@ function ajax(method, url, data, success) {
 
 	}
 }
-/*冒泡和捕获是相对的，不捕获就冒泡，不冒泡就捕获,bool是否捕获,事件绑定bind(oBtn, 'click', function(){},true;捕获改为true,冒泡为false,事件冒泡是默认存在的,IE9以上的标准IE有attachEvent和addEventListener两个方法,IE8不支持,attachEvent函数不支持捕获，所以只有IE8以下的不支持捕获
+/*冒泡和捕获是相对的,事件绑定bind(oBtn, 'click', function(){},true;捕获改为true,冒泡为false,事件冒泡是默认存在的,IE9以上的标准IE有attachEvent和addEventListener两个方法,IE8不支持,attachEvent函数不支持捕获，所以只有IE8以下的不支持捕获
 取消单个事件的冒泡用ev.cancelBubble,只能取消当前事件的冒泡效果，不能取消别的*/
-function bind(obj,evname,fn,bool){
+function bind(obj,evname,fn){
 	if(obj.addEventListener){
-		obj.addEventListener(evname,fn,bool);//如果obj.下的addEventListener存在就说明是标准，如果不存在就说明是IE
+		obj.addEventListener(evname,fn,false);//如果obj.下的addEventListener存在就说明是标准，如果不存在就说明是IE
 	}else{
 		obj.attachEvent('on'+evname,function(){
 			fn.call(obj);
 		})
 	}
-
 }
 //事件捕获改为true.IE只支持事件冒泡，不支持事件捕获，它也不支持addEventListener函数，不会用第三个参数来表示是冒泡还是捕获，它提供了另一个函数attachEvent。
 //事件取消函数
-function bindcanel(obj,evname,fn,bool){
+function bindcanel(obj,evname,fn){
 	if(obj.addEventListener){
-		obj.removeEventListener(evname, fn, bool);
+		obj.removeEventListener(evname, fn, false);
 	}else{
-		obj.detachEvent('on'+evname, fn);
+		obj.detachEvent('on'+evname, function(){
+			fn.call(obj);
+		});
 	}
 }
 
-//拖拽的封装
-function drag(obj) {
+//拖拽的封装,任意距离
+function dragFree(obj) {
+	//阻止默认事件函数，防止拖拽元素无法进行表单输入
+	     function preventDefaultEvent(ev){
+            var ev=ev||event;
+            ev.preventDefault?ev.preventDefault():ev.returnValue=false;
+         }
 		obj.onmousedown = function(ev) {
+			 document.addEventListener?document.addEventListener('mousemove',preventDefaultEvent,false):document.attachEvent('onmousemove',preventDefaultEvent);//mouseup设置为null时已经取消函数
 			var ev = ev || event;
-			
 			var disX = ev.clientX - this.offsetLeft;
 			var disY = ev.clientY - this.offsetTop;
-			
-			if ( obj.setCapture ) {
-				obj.setCapture();
+			//设置全局捕获(和事件捕获不一样，这是把所有后续事件拉到自己身上来，防止有文字被选中时低版本IE拖拽出问题)
+			if (this.setCapture ) {
+				this.setCapture();
 			}
-			
 			document.onmousemove = function(ev) {
 				var ev = ev || event;
-				
 				obj.style.left = ev.clientX - disX + 'px';
 				obj.style.top = ev.clientY - disY + 'px';
 			}
-			
 			document.onmouseup = function() {
 				document.onmousemove = document.onmouseup = null;
 				//释放全局捕获 releaseCapture();
-				if ( obj.releaseCapture ) {
+				if (obj.releaseCapture ) {
 					obj.releaseCapture();
 				}
 			}
-			
-			return false;
-			
 		}
-		
 	}
-	//限制范围的拖拽
-	function drag(obj) {
+//限制父级范围的拖拽
+function dragHowLong(dragElement,fatherElement) {
+		  function preventDefaultEvent(ev){
+            var ev=ev||event;
+            ev.preventDefault?ev.preventDefault():ev.returnValue=false;
+         }
 		
-		obj.onmousedown = function(ev) {
+		dragElement.onmousedown = function(ev) {
+			 document.addEventListener?document.addEventListener('mousemove',preventDefaultEvent,false):document.attachEvent('onmousemove',preventDefaultEvent);
 			var ev = ev || event;
-			
 			var disX = ev.clientX - this.offsetLeft;
 			var disY = ev.clientY - this.offsetTop;
 			
-			if ( obj.setCapture ) {
-				obj.setCapture();
+			if ( this.setCapture ) {
+				this.setCapture();
 			}
 			
 			document.onmousemove = function(ev) {
@@ -178,41 +196,43 @@ function drag(obj) {
 				
 				if ( L < 0 ) {
 					L = 0;
-				} else if ( L > document.documentElement.clientWidth - obj.offsetWidth ) {
-					L = document.documentElement.clientWidth - obj.offsetWidth;
+				} else if ( L > fatherElement.clientWidth - dragElement.offsetWidth ) {
+					L = fatherElement - dragElement.offsetWidth;
 				}
 				
 				if ( T < 0 ) {
 					T = 0;
-				} else if ( T > document.documentElement.clientHeight - obj.offsetHeight ) {
-					T = document.documentElement.clientHeight - obj.offsetHeight;
+				} else if ( T > fatherElement.clientHeight - dragElement.offsetHeight ) {
+					T = fatherElement.clientHeight - dragElement.offsetHeight;
 				}
 				
-				obj.style.left = L + 'px';
-				obj.style.top = T + 'px';
+				dragElement.style.left = L + 'px';
+				dragElement.style.top = T + 'px';
 				
 			}
-			
 			document.onmouseup = function() {
 				document.onmousemove = document.onmouseup = null;
-				if ( obj.releaseCapture ) {
-					obj.releaseCapture();
+				if ( dragElement.releaseCapture ) {
+					dragElement.releaseCapture();
 				}
 			}
-			return false;
 		}
 	}
-	//磁性吸附,更改L值
-	function drag(obj) {
+	//磁性吸附拖拽,更改howLong值
+function dragYourLong(dragElement,fatherElement,howLong) {
+		  function preventDefaultEvent(ev){
+            var ev=ev||event;
+            ev.preventDefault?ev.preventDefault():ev.returnValue=false;
+         }
 		
-		obj.onmousedown = function(ev) {
+		dragElement.onmousedown = function(ev) {
+			 document.addEventListener?document.addEventListener('mousemove',preventDefaultEvent,false):document.attachEvent('onmousemove',preventDefaultEvent);
 			var ev = ev || event;
-			
 			var disX = ev.clientX - this.offsetLeft;
 			var disY = ev.clientY - this.offsetTop;
 			
-			if ( obj.setCapture ) {
-				obj.setCapture();
+			if ( this.setCapture ) {
+				this.setCapture();
 			}
 			
 			document.onmousemove = function(ev) {
@@ -221,83 +241,131 @@ function drag(obj) {
 				var L = ev.clientX - disX;
 				var T = ev.clientY - disY;
 				
-				if ( L < 100 ) {
+				if ( L < howLong ) {
 					L = 0;
-				} else if ( L > document.documentElement.clientWidth - obj.offsetWidth ) {
-					L = document.documentElement.clientWidth - obj.offsetWidth;
+				} else if ( L > fatherElement.clientWidth - dragElement.offsetWidth-howLong) {
+					L = fatherElement.clientWidth - dragElement.offsetWidth;
 				}
 				
-				if ( T < 0 ) {
+				if ( T < howLong ) {
 					T = 0;
-				} else if ( T > document.documentElement.clientHeight - obj.offsetHeight ) {
-					T = document.documentElement.clientHeight - obj.offsetHeight;
+				} else if ( T > fatherElement.clientHeight - dragElement.offsetHeight-howLong ) {
+					T = fatherElement.clientHeight - dragElement.offsetHeight;
 				}
 				
-				obj.style.left = L + 'px';
-				obj.style.top = T + 'px';
+				dragElement.style.left = L + 'px';
+				dragElement.style.top = T + 'px';
 				
 			}
-			
 			document.onmouseup = function() {
 				document.onmousemove = document.onmouseup = null;
-				if ( obj.releaseCapture ) {
-					obj.releaseCapture();
+				if ( dragElement.releaseCapture ) {
+					dragElement.releaseCapture();
 				}
+			}
+		}
+	}
+/*碰撞检测原理之一:利用拖拽去把待碰撞的某元素四边(假设待碰撞的元素为矩形)的距离做检测,用九宫格检测法.将待检测的矩形四边扩散无限延长，这时待检测的矩形会处于九宫格中间，所拖拽的元素在九宫格中间的一个格子之外就是非碰撞状态，依此条件作为判断*/
+function checkDragCollide(dragElement,waitDragElement) {
+		  function preventDefaultEvent(ev){
+            var ev=ev||event;
+            ev.preventDefault?ev.preventDefault():ev.returnValue=false;
+         }
+		
+		dragElement.onmousedown = function(ev) {
+			 document.addEventListener?document.addEventListener('mousemove',preventDefaultEvent,false):document.attachEvent('onmousemove',preventDefaultEvent);
+			var ev = ev || event;
+			var disX = ev.clientX - this.offsetLeft;
+			var disY = ev.clientY - this.offsetTop;
+			
+			if ( this.setCapture ) {
+				this.setCapture();
 			}
 			
-			return false;
-		}
-	}
+			document.onmousemove = function(ev) {
+				var ev = ev || event;
+				
+				var L = ev.clientX - disX;
+				var T = ev.clientY - disY;
+				//被拖拽元素
+                var dragElementLeft=L;//拖拽元素左边的left值
+                var dragElementRight=L+dragElement.offsetWidth;//拖拽元素右边的left值
+                var dragElementTop=T;//拖拽元素上边的top值
+                var dragElementBottom=T+dragElement.offsetHeight;//拖拽元素下边的top值
+               //等待碰撞元素
+                var waitDragElementLeft=waitDragElement.offsetLeft; 
+                var waitDragElementRight=waitDragElement.offsetLeft+waitDragElement.offsetWidth; 
+                var waitDragElementTop=waitDragElement.offsetTop; 
+                var waitDragElementBottom=waitDragElement.offsetTop+waitDragElement.offsetHeight; 
+                 
+                 //碰撞检测
 
-
-/*addClass 添加类，配合辅助函数使用 */
-	function addClass(obj,Sclass){
-		if(obj.className == ''){
-			obj.className= Sclass;
+                 if(dragElementRight<waitDragElementLeft || dragElementLeft>waitDragElementRight || dragElementTop>waitDragElementBottom || dragElementBottom<waitDragElementTop){
+                 	//没碰上的逻辑
+                 	waitDragElement.innerHTML='没碰上';
+                 }else{
+                 	//碰上的逻辑
+                        waitDragElement.innerHTML='卧槽,碰上了';
+                 }			
+				
+				dragElement.style.left = L + 'px';
+				dragElement.style.top = T + 'px';
+				
 			}
-			else{
-					//如果原有的Class已经存在||如果原有的Class不存在
-
-					var arrClassName=obj.className.split(' ');//分隔原来的ClassName
-					var  _index=arrIndexOf(arrClassName,Sclass);
-					if(_index == -1){
-						obj.className = obj.className + ' ' +Sclass;
-
-					}
+			document.onmouseup = function() {
+				document.onmousemove = document.onmouseup = null;
+				if ( dragElement.releaseCapture ) {
+					dragElement.releaseCapture();
 				}
-		}
-
-		function arrIndexOf(oArr,v){//辅助函数
-
-			for (var i = 0; i < oArr.length; i++) {
-
-				if(oArr[i] == v){
-					return i;//找到了位置，返回i
-
-				}else{
-
-					return -1;//没找到，返回-1
-				}
-			};
-
-		}
-/***********删除类,辅助函数同上******/
-function removeClass(obj,sClass){
-		if(obj.className != ''){
-
-	var ClassName=obj.className.split(' ');
-	
-	var _index=arrIndexOf(obj,sClass);
-		if(_index != -1){
-			ClassName.splice(_index,1);//从原来的类名数组当中剔除一个
-			obj.className=ClassName;//重新把删除类名后的赋值给obj
-
-		}	
-
+			}
 		}
 	}
 
-
+/*addClass 添加一个类*/
+function addClass(obj,sclass){
+	if(obj.className==''){
+		obj.className=sclass;
+	}else{
+		var arrClass=obj.className.split(' ');
+		for(var i=0;i<arrClass.length;i++){
+			if(sclass !=arrClass[i]){
+              obj.className+=' '+sclass;
+			}
+		}
+	}
+}
+/***********删除一个类******/
+function removeClass(obj,sClass){
+	if(obj.className != ''){
+	   var classArr=obj.className.split(' ');
+	   for(var i=0;i<classArr.length;i++){
+		  if(classArr[i] == sClass){
+			classArr.splice(i,1);
+     		obj.className=classArr.join(' ');
+     		break;	
+ 		 }
+	        }
+	    
+		}
+	}
+//表单placeHolder模拟
+function placeHolder(obj,string){
+   var defaultText=true;
+   obj.onfocus=function(){
+	if(defaultText){
+		this.value='';
+ 	}
+  }
+obj.onblur=function(){
+	var re=/\S/;
+	if(!re.test(this.value)){
+		this.value=string;
+		defaultText=true;
+	}else{
+        defaultText=false;
+	}
+  }
+}
 //设置cookie
 function setCookie(name,value,time){
 
@@ -806,82 +874,26 @@ function transitionEndEvent(obj,fn) {
 	obj.addEventListener('WebkitTransitionEnd', fn, false);
 	obj.addEventListener('transitionend',fn, false);
 }
-//js高级程序设计中的事件相关
-
-var EventUtil={
-	//添加事件绑定
-	addHandler:function(element,type,handler){
-		if(element.addEventListener){
-			element.addEventListener(type,handler,false);
-		}else if(element.attachEvent){
-			element.attachEvent('on'+type,handler);
-		}else{
-			element['on'+type]=handler;
-		}
-	},
-	//取得事件对象
-	getEvent:function(event){
-		return event?event:window.event;
-	},
-	//取得事件目标
-	getTarget:function(event){
-		return event.target||event.srcElement;
-	},
-	//阻止默认事件
-	preventDefaultFunc:function(event){
-		if(event.preventDefault){
-			event.preventDefault();
-		}else{
-			event.returnValue=false;
-		}
-	},
-	//阻止捕获或冒泡
-	stopPropagationFunc:function(event){
-		if(event.stopPropagation){
-			event.stopPropagation();
-		}else{
-			event.cancelBubble=true;
-		}
-
-	},
-//移出事件绑定
-	removeHandler:function(element,type,handler){
-		if(element.addEventListener){
-			element.removeEventListener(type,handler,false);
-		}else if(element.attachEvent){
-			element.detachEvent('on'+type,handler);
-		}else{
-			element['on'+type]=null;
-		}
-
-	}
+//阻止默认事件和冒泡,前者为标准后者为非标准,这里只是提供写法，为封装函数
+function defaultEvent(ev){
+	ev=ev||event;
+	ev.preventDefault?ev.preventDefault():ev.returnValue=false;
+    ev.stopPropagation?ev.stopPropagation():ev.cancelBubble=true;
 }
-//事件方法举例用途:
-/*var myBtn=document.getElementById('myBtn');
-myBtn.onclick=function(event){
-	event=EventUtil.getEvent();
-
-};
-*/
-
 //操作系统，浏览器，以及版本检测(摘自高级程序设计)
 var client = function(){
-
-    //rendering engines
+    //内核检测
     var engine = {            
         ie: 0,
         gecko: 0,
         webkit: 0,
         khtml: 0,
         opera: 0,
-
-        //complete version
+        //内核版本
         ver: null  
     };
-    
-    //browsers
+    //浏览器
     var browser = {
-        
         //browsers
         ie: 0,
         firefox: 0,
@@ -889,13 +901,9 @@ var client = function(){
         konq: 0,
         opera: 0,
         chrome: 0,
-
-        //specific version
         ver: null
     };
-
-    
-    //platform/device/OS
+    //操作系统
     var system = {
         win: false,
         mac: false,
@@ -909,7 +917,6 @@ var client = function(){
         android: false,
         nokiaN: false,
         winMobile: false,
-        
         //game systems
         wii: false,
         ps: false 
