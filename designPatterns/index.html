@@ -4,48 +4,40 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
+*{
+padding: 0;
+margin: 0
+}
 
-		div{
-			width: 100px;
-			height: 100px;
-			background: red;
-			margin-bottom: 10px;
-		}
+#div{
+width: 100px;
+height: 100px;
+background: red;
+}
 
 	</style>
+
+	
+	
+</head>
+<body>
+<div id="div"></div>
 	<script>
 function a(){alert(arguments[0]);}
+function l(){console.log(arguments[0]);}
+function i(){return document.getElementById(arguments[0]);}
 
-
-window.onload=function(){
-	function l(){console.log(arguments[0]);}
-	var oDiv=document.getElementsByTagName('div');
-	for(var i=0;i<oDiv.length;i++){
-		(function(i){
-			oDiv[i].onclick=function(){
-				a(i);
-			}
-		})(i);
+oDiv.onclick=function(){
+	var xhr=new XMLHttpRequest();
+	xhr.open('');
+	xhr.send();
+	xhr.onreadystatechange=function(){
 	}
-var myDivLeft=document.getElementById('div');
-var myFinall=document.getElementById('mySpan');
+}
 
-
-
-
-	}
 
 
 
 	</script>
-	
-</head>
-<body>
-<div>1</div>
-<div>2</div>
-<div>3</div>
-<div>4</div>
-<div>5</div>
-	
 </body>
 </html>

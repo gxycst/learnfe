@@ -1,12 +1,4 @@
-/*完美运动框架速度版
-startMove(oDiv,{'width':200,
-'opacity':50
-},function(){
-alert('啊啊啊啊');
-})
-
-
-*/
+/*example:startMove(oDiv,{'width':200,'opacity':50},function(){})*/
 function moveofSpeed(obj, json, fn) {
 	clearInterval(obj.iTimer);
 	var iCur = 0;
