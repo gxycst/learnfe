@@ -1,5 +1,8 @@
-﻿chcp 437字体切换
+﻿
+chcp 437字体切换
+
 e2969ed5aadba469805a296ff4fa15a9
+
 省略号
 {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
 offsetWidth包括边框
@@ -22,86 +25,6 @@ clientX:跟screenX相比就是将参照点改成了浏览器内容区域的左�
 pageX：参照点也是浏览器内容区域的左上角，但它不会随着滚动条而变动,滚动越大,值就越大.
 
 
-谷歌浏览器插件:infinity 
-
-Node.js浏览器调试工具:
-//进入到当前目录
-browser-sync start --server --files "*.html,*.js,*.css"
-browser-sync start --server --files "*.html,*.js,*.css" #启动静态网站
-browser-sync start --proxy "myproject.dev" --files "css/*.css"  #启动动态网站
-
-
-sublime字体:
-
-YaHei Consolas Hybrid
-microsoft Yahei Mono
-Calibri
-georgia
-arial
-segoe print
-inconsolata-g
-
-window本地文件引用
-
-    <link rel="stylesheet" href="file:///E|/tongyong/Reset.css">
-    <script src="file:///E|/tongyong/Jquery-mini.js"></script>
-
-
-
-
-sublime 常用插件
-
-AdvancedNewFile:命令行添加文件
-Emmet Css Snippets　．ｃｓｓ文件支持代码补全
-HTMLAttributes:为html属性添加class等等属性
-AllAutocomplete在所有打开文件中查找匹配信息
-
-andyjs 2 canvas提示插件 注意此插件在3里使用需要在 :preference--》package setting---》package control---》setting users这里面设置添加允许，手动安装的话这里的命令没有添加会导致移到backup哪里
-
-HTML5   html5提示插件插件
-SublimeCodeIntel代码自动提示
-NodeJS插件
-ColorPicker调色板插件
-Angularjs插件
-Jquery插件
-DocBlackr快速添加注释
-AutoFileName显示路径
-AndyJS2支持canvas插件
-BracketHighlighter侧边栏括号提示
-JsFormat  CSS Format   js,css,代码格式化
-SideBarEnhancements浏览器预览
-ColorSublime主题预览
-ClickableURLs url加下划线并可点击
-Tag 标签格式化 ctrl+alt+f
-CSS3
-主题:
-
-Ksix主题
-
-Clacier主题
-
-配置
-
-"word_wrap": true//超出可视区自动换行
-["keys":["ctrl+shift+f"],"command":"reindent","args":{"sing_line":false}]自带的按键绑定格式化html
-
-"font_face": "Consolas",
-	"font_options":
-	[
-		"no_bold",
-		"no_antialias",
-		"gray_antialias"
-	],
-	"font_size": 13,
-	"highlight_line": true,
-	"ignored_packages":
-	[
-		"Vintage"
-	],
-	"line_padding_bottom": 5,
-	"line_padding_top": 5
-
-
 
 --------------移动端----------------------
 注意:移动端可能有的手机不支持百分比圆角,所以最好用具体的rem,或px或em
@@ -112,10 +35,6 @@ ontouchstart=function(e){
 	x=e.changedTouches[0].pageX;//距离屏幕左的距离
 }
 
-
-1.移动事件  ontouchend  类似于点击
-
-element.addEventListener('touchend',functio(){},false);
 
 
 2.viewport视口
@@ -174,90 +93,16 @@ C.通过100%、flex或rem等手段，等比例缩放 1rem= 1个html上设置的�
 
 
 在高dpi情况下图片会有发虚失真 640 320
-------------------------------------------------
-rem  
-
-em 相对于字体大小  font-size:24px 1em=24px
-
-rem 相对于根节点的字体大小的计量单位
-
---------------------------------------
-
-click 事件在移动端会有300ms的延迟  ,用touchend 手指离开事件
-
-touch事件
-
-touchstart == mousedown
-
-touchmove == mousemove
-
-touchend == mouseup
 
 
 二,touchEvent
 1.touches 当前位于屏幕上的所有手指的一个列表
 2.targetTouches位于当前dom元素上的手指的一个列表
-3changedTouches涉及当前事件的手指的一个列表(推荐用此)
-
-
-
-
-
-
-
+3.changedTouches涉及当前事件的手指的一个列表(推荐用此)
 
 
 
 <FLEX布局技术>
 
 display:flex  也就是把一个盒子分成若干份,每个子元素占多少份.中间也可以固定某个宽度值.父元素会减去固定的宽度.然后再来分
-
-
-
-
-
-
-
-
-
------------------------------
-
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<!--兼容渲染-->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<!--强制视口宽度-->
-	<meta name="viewport" id="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,target-densitydpi=device-dpi" /> 
-	<!--开启webApp支持-->
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<!--favicon图标-->
-	<link rel="shortcut icon" href="#">
-	<!--IOS设备顶部样式-->
-	 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<!--去除IOS电话识别-->
-	<meta content="telephone=no" name="format-detection" />
-	<title>积分商城登录</title>
-	<!--样式重置-->
-	<link rel="stylesheet" type="text/css" href="css/Reset.css">
-	<!--横竖屏交互提示-->
-	<script src="js/portraitLandscape.js"></script>
-	<script src="js/zepto.js"></script>
-	<!--界面样式-->
-</head>
-<body>
-
-
-
-　offsetWidth=(border-width)*2+(padding-left)+(width)+(padding-right)
-
-　offsetHeight=(border-width)*2+(padding-top)+(height)+(padding-bottom)
-	
-</body>
-</html>
-
-
-
 

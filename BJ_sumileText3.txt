@@ -1,0 +1,104 @@
+﻿1.控制台代码:
+import  urllib.request,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));open(os.path.join(ipp,pf),'wb').write(urllib.request.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+
+
+2.常用插件
+Emmet
+AdvancedNewFile:命令行添加文件
+Emmet Css Snippets　.css文件支持代码补全
+HTMLAttributes:   html属性标签提示
+AllAutocomplete   :在所有打开文件中查找匹配信息
+andyjs 2 支持canvas提示的js代码提示插件 注意此插件在3里使用需要在 :preference--》package setting---》package control---》setting users->installed_packages设置添加允许，否则会导致自动删除
+HTML5   html5提示插件插件
+SublimeCodeIntel js代码自动提示
+NodeJS插件   (百度云里文件,配置文件已经更改)
+ColorPicker 调色板插件
+Angularjs 插件
+Jquery 插件
+DocBlockr 快速添加注释
+AutoFileName 显示路径
+BracketHighlighter 侧边栏括号提示
+JsFormat和CSSFormat   js,css,代码格式化
+SideBarEnhancements 浏览器预览
+ColorSublime 主题预览
+ClickableURLs url加下划线并可点击
+Tag 标签格式化 ctrl+alt+f
+CSS3 css3插件
+
+
+3.自定义配置
+3.1按键绑定配置
+Preferences ->keybindings-User
+["keys":["ctrl+shift+f"],"command":"reindent","args":{"sing_line":false}]自带的按键绑定格式化html
+3.2代码视图配置:Preferences->Settings-User
+
+{
+	"font_face": "Consolas",
+	"font_options":
+	[
+		"no_bold",
+		"no_antialias",
+		"gray_antialias"
+	],
+	"font_size": 13,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_padding_bottom": 5,
+	"line_padding_top": 5,
+           "word_wrap": true
+}
+
+
+4.美化
+4.1个人防疲劳常用字体
+YaHei Consolas Hybrid
+microsoft Yahei Mono
+Calibri
+georgia
+arial
+segoe print
+inconsolata-g
+
+4.2常用主题:
+Ksix
+Clacier
+
+
+
+5.注册码激活:
+注册码网址:http://www.jianshu.com/p/656b0c24141e
+注册码之一:
+—– BEGIN LICENSE —–
+Michael Barnes
+Single User License
+EA7E-821385
+8A353C41 872A0D5C DF9B2950 AFF6F667
+C458EA6D 8EA3C286 98D1D650 131A97AB
+AA919AEC EF20E143 B361B1E7 4C8B7F04
+B085E65E 2F5F5360 8489D422 FB8FC1AA
+93F6323C FD7F7544 3F39C318 D95E6480
+FCCC7561 8A4A1741 68FA4223 ADCEDE07
+200C25BE DBBC4855 C4CFB774 C5EC138C
+0FEC1CEF D9DCECEC D3A5DAD1 01316C36
+—— END LICENSE ——
+
+
+
+6.其他.
+6.1window本地文件跨盘文件引用
+    <link rel="stylesheet" href="file:///E|/tongyong/Reset.css">
+    <script src="file:///E|/tongyong/Jquery-mini.js"></script>
+
+ 6.2
+ 浏览器同步调试工具:
+6.2.1安装
+npm install -g browser-sync
+6.2.2
+//进入到当前目录
+browser-sync start --server --files "*.html,*.js,*.css"
+browser-sync start --server --files "*.html,*.js,*.css" #启动静态网站
+browser-sync start --proxy "myproject.dev" --files "css/*.css"  #启动动态网站
+

@@ -1,3 +1,1 @@
-var arr=['abc'];
-a=null||1;
-console.log(a)
+console.log('哈哈')
