@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+function a(){alert(arguments[0])}
+function l(){console.log(arguments[0])}
+	</script>
+</head>
+<body>
+<script>
+/*
+	var Singleton=function(name){
+		this.name=name;
+		this.instance=null;
+
+	}
+	Singleton.prototype.getName=function(){
+		alert(this.name);
+	}
+	Singleton.getInstance=function(name){
+		if(!this.instance){
+			return this.instance=new Singleton(name);
+		}
+		return this.instance;
+	}
+*/
+/*方式二
+var Singleton=function(name){
+		this.name=name;
+	}
+	Singleton.prototype.getName=function(){
+		alert(this.name);
+	}
+	Singleton.getInstance=(function(){
+		var instance=null;
+		return function(name){
+			if(!instance){
+				instance=new Singleton(name);
+			}
+			return instance;
+		}
+	})();
+*/
+
+var obj1=Singleton.getInstance('six');
+var obj2=Singleton.getInstance('seven');
+a(obj1==obj2);
+
+</script>	
+</body>
+</html>

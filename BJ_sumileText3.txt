@@ -48,12 +48,13 @@ Preferences ->keybindings-User
 	],
 	"line_padding_bottom": 5,
 	"line_padding_top": 5,
-           "word_wrap": true
+    "word_wrap": true
 }
 
 
 4.美化
 4.1个人防疲劳常用字体
+DejaVu Sans Mono
 YaHei Consolas Hybrid
 microsoft Yahei Mono
 Calibri
