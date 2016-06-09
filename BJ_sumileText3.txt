@@ -55,6 +55,7 @@ Preferences ->keybindings-User
 4.美化
 4.1个人防疲劳常用字体
 DejaVu Sans Mono
+Inconsolata
 YaHei Consolas Hybrid
 microsoft Yahei Mono
 Calibri

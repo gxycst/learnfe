@@ -1,4 +1,12 @@
-//js检测对象构造函数
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>美国版设计模式之对象方法检测(原型上的和构造函数上的都可以检测!)</title>
+</head>
+<body>
+<script>
+    //js检测对象构造函数
 var Interface = function(name, methods) {
     if(arguments.length != 2) {
         throw new Error("检查类的构造函数参数数量必须在两个以上,一个是需要检测的类的名字,一个是以数组形式传入的需要检测的类的方法!");
@@ -11,7 +19,7 @@ var Interface = function(name, methods) {
         }
         this.methods.push(methods[i]);        
     }    
-};    
+}; 
 
 //js检测对象静态方法
 
@@ -32,9 +40,40 @@ Interface.ensureImplements = function(object) {
         }
     } 
 };
+    /*
+Interface这个方法可以用来检测某个对象是否拥有某个方法，使用例子如下
+    */
+//假设我已经用面向对象的写法写了一个业务逻辑
+var checkUserMessage=function(){
+   this.getAge=function(){
+    console.log('我是年龄方法!')
+   }
+}
+checkUserMessage.prototype={
+    getName:function(){
+        console.log('我是名字方法');
+    }
+}
+//实例化一个待检测的类
+var checkUserMessageObj=new checkUserMessage();
+//实例化一个检测对象
+var checErrorObj=new Interface('checkUserMessageObj',['getName','getAge']);
+
+//在写其他业务逻辑之前，先调用检测对象的静态方法检测，查看抛出的错误类型
+
+function myJavascriptCode(userObj,errObj){
+    //在这里先检测一下
+Interface.ensureImplements(userObj,errObj);//如果发现方法有错误，则会在控制台抛出异常
+   //开始写逻辑
+    checkUserMessageObj.getName();
+    checkUserMessageObj.getAge();
+}
+
+//执行用户逻辑处理函数
+myJavascriptCode(checkUserMessageObj,checErrorObj);
 
 
-
-
-
-
+</script>
+    
+</body>
+</html>

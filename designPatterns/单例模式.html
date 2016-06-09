@@ -2,52 +2,38 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>单例模式之webQQ登录框[腾讯设计模式]</title>
 	<script>
 function a(){alert(arguments[0])}
 function l(){console.log(arguments[0])}
 	</script>
 </head>
 <body>
+<button id="loginBtn">登录</button>
 <script>
-/*
-	var Singleton=function(name){
-		this.name=name;
-		this.instance=null;
-
+//通用的单例逻辑
+var getSingle=function(fn){
+	var result=null;
+	return function(){
+		return result||(result=fn.apply(this,arguments));
 	}
-	Singleton.prototype.getName=function(){
-		alert(this.name);
-	}
-	Singleton.getInstance=function(name){
-		if(!this.instance){
-			return this.instance=new Singleton(name);
-		}
-		return this.instance;
-	}
-*/
-/*方式二
-var Singleton=function(name){
-		this.name=name;
-	}
-	Singleton.prototype.getName=function(){
-		alert(this.name);
-	}
-	Singleton.getInstance=(function(){
-		var instance=null;
-		return function(name){
-			if(!instance){
-				instance=new Singleton(name);
-			}
-			return instance;
-		}
-	})();
-*/
-
-var obj1=Singleton.getInstance('six');
-var obj2=Singleton.getInstance('seven');
-a(obj1==obj2);
-
+}
+//创建的业务i逻辑,如需进行其他操作，记得加return把所需操作对象返回
+var Login=getSingle(function(innerHTMLA){
+   var div=document.createElement('div');
+   div.style.display='none';
+   div.style.background='red';
+   div.style.width='200px';
+   div.style.height='200px';
+   div.innerHTML=innerHTMLA;
+   div.className='imDiv';
+   document.body.appendChild(div);
+   return div;
+});
+document.getElementById('loginBtn').onclick=function(){
+	var login=Login('你好');
+	login.style.display='block';
+}
 </script>	
 </body>
 </html>
