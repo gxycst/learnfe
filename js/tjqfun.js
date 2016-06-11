@@ -1055,30 +1055,31 @@ var client = function(){
 
 }();
 
-//面向对象之继承 extend BaiDu||原型式继承
-function inhertObject(somePrototype){
-	function F(){};
-	F.prototype=somePrototype;
-	return new F();
-}
-// 寄生组合继承,虽然开销小，不过要传一个原型再使用,不如浅拷贝+call实际
-function inheritPrototype(sonClass,fatherClassPrototype){
-	var p=inhertObject(fatherClassPrototype);
-	p.constructor=sonClass;
-	sonClass.prototype=p;
-}
-function inheritExtend(sonClass,fatherClass){
-	var p=new fatherClass();
-	p.constructor=sonClass;
-	sonClass.prototype=p;
+
+
+
+//面向对象之类式继承
+function extendClass(SonClass,FatherClass){
+	var F=function(){};//申明一个不占内存的过渡函数
+	F.prototype=FatherClass.prototype;
+	SonClass.prototype=new F();//解除耦合关系实现继承
+	SonClass.prototype.constructor=SonClass;//修复构造函数指向
+	SonClass.fatherclassName=FatherClass.prototype;//为子类添加自定义属性解除继承时父类类名耦合
+	if(FatherClass.prototype.constructor==Object.prototype.constructor){//确保父类的构造函数被正确设置
+		FatherClass.prototype.constructor=FatherClass;
+		//子类时调用由FatherClass.call()改成SonClass.fatherclassName.constructor.call();
+	}
 }
 
-//单继承(浅拷贝)
-function extend(target,source){
-	for(var property in source){
-		target[property]=source[property];
+
+
+
+
+//拷贝继承(浅拷贝,只复制prototype,不复制构造函数内部的属性)
+function extendPrototype(SonClass,FatherClass){
+	for(var attr in FatherClass.prototype){
+		SonClass.prototype[attr]=FatherClass.prototype[attr];
 	}
-	return target;
 }
 //多继承
 function moreExtend(){

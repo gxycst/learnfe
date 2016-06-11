@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//面向对象之类式继承
+function extendClass(SonClass,FatherClass){
+	var F=function(){};//申明一个不占内存的过渡函数
+	F.prototype=FatherClass.prototype;
+	SonClass.prototype=new F();//解除耦合关系实现继承
+	SonClass.prototype.constructor=SonClass;//修复构造函数指向
+	SonClass.fatherclassName=FatherClass.prototype;//为子类添加自定义属性解除继承时父类类名耦合
+	if(FatherClass.prototype.constructor==Object.prototype.constructor){//确保父类的构造函数被正确设置
+		FatherClass.prototype.constructor=FatherClass;
+		//子类时调用由FatherClass.call()改成SonClass.fatherclassName.constructor.call();
+	}
+}
+
+//拷贝继承[](浅拷贝,只复制prototype,不复制构造函数内部的属性)
+function extendPrototype(SonClass,FatherClass){
+	for(var methodName in FatherClass.prototype){
+		SonClass.prototype[methodName]=FatherClass.prototype[methodName];
+	}
+}
+//addMethodForSomeClass(Author,Mixin),把Mixin中的所有Author中不存在的所有方法扩充到Author类中.如果只想扩充某一个或者两个方法则通过传递第三个参数开始
+function addMethodForSomeClass(targetClass,commonClass){
+	if(arguments[2]&&typeof arguments[2]==='string'){//如果传入了第三个参数,则说明是有选择性添加
+		for(var i=2,len=arguments.length;i<len;i++){
+				targetClass.prototype[arguments[i]]=commonClass.prototype[arguments[i]]
+		}
+	}else{//说明是全部复制
+		for(var methodName in FatherClass.prototype){
+		if(!targetClass.prototype[methodName]){
+		targetClass.prototype[methodName]=commonClass.prototype[methodName];
+	  }
+    }
+  }
+}
+
+
+//原型继承
+
+function clone(obj){
+	function F(){}
+	F.prototype=obj;
+	return new F();
+}
+
+//多继承
+function moreExtend(){
+	var i=1,
+	len=arguments.length,
+	target=arguments[0],
+	arg;
+	for(;i<len;i++){
+		arg=arguments[i];
+		for(var property in arg){
+			target[property]=arg[property];
+		}
+	}
+	return target;
+}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

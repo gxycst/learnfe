@@ -48,8 +48,10 @@ Preferences ->keybindings-User
 	],
 	"line_padding_bottom": 5,
 	"line_padding_top": 5,
-    "word_wrap": true
+        "word_wrap": true
 }
+
+自定义代码块 Data ->Packages ->User 文件夹下，后缀名为.sublime-snippet
 
 
 4.美化
@@ -60,7 +62,6 @@ YaHei Consolas Hybrid
 microsoft Yahei Mono
 Calibri
 georgia
-arial
 segoe print
 inconsolata-g
 
@@ -103,4 +104,9 @@ npm install -g browser-sync
 browser-sync start --server --files "*.html,*.js,*.css"
 browser-sync start --server --files "*.html,*.js,*.css" #启动静态网站
 browser-sync start --proxy "myproject.dev" --files "css/*.css"  #启动动态网站
+
+
+7.常用代码块(用Tools/Developer/New Snippet新建,自动保存在Preferences/Browse Packages/User目录下，要以.sublime-snippet为后缀)
+
+ast:常用调试函数
 

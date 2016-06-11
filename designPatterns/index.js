@@ -1,37 +1,83 @@
-//js检测对象构造函数
-var Interface = function(name, methods) {
-    if(arguments.length != 2) {
-        throw new Error("检查类的构造函数参数数量必须在两个以上,一个是需要检测的类的名字,一个是以数组形式传入的需要检测的类的方法!");
-    }
-    this.name = name;
-    this.methods = [];
-    for(var i = 0, len = methods.length; i < len; i++) {
-        if(typeof methods[i] !== 'string') {
-            throw new Error("所传入的方法中有一个类型不是字符串!");
-        }
-        this.methods.push(methods[i]);        
-    }    
-};    
+function L(s){console.log(s)}
+function T(a,b){if(a===b){return console.log('两个对象全等!!!');}if(a==b){return console.log('两个对象全等表面上相等!!!');}return console.log('两个对象风马牛不相及')}
+function F(fn){
+	if(typeof fn !== 'function'){
+		L('不是一个函数');
+		return;
+	}
+	fn.call(null);
+}
+/*
+var Person={
+	name:"默认名字",
+	getName:function(){
+		L(this.name);
+	}
+}
+var Author=clone(Person);
+Author.books=[];
+Author.getBooks=function(){
+	L(this.books);
+}
 
-//js检测对象静态方法
+var author=[];
+author[0]=clone(Author);
+author[0].name='TJQ';
+author[0].books=['JS设计模式'];
 
-Interface.ensureImplements = function(object) {
-    if(arguments.length < 2) {
-        throw new Error("检测类的所传入的参数数量不对,至少应有一个被检测对象和一个检测对象");
-    }
-    for(var i = 1, len = arguments.length; i < len; i++) {
-        var interface = arguments[i];
-        if(interface.constructor !== Interface) {
-            throw new Error("检测对象不是检测函数构造出来的");
-        }
-        for(var j = 0, methodsLen = interface.methods.length; j < methodsLen; j++) {
-            var method = interface.methods[j];
-            if(!object[method] || typeof object[method] !== 'function') {
-                throw new Error("你所检测的"+interface.name+"对象的"+method+"方法并不存在!");
-            }
-        }
-    } 
-};
+author[1]=clone(Author);
+author[1].name='WJQ';
+author[1].books=['JS设计模式'];
+author[1].getName();
+author[1].getBooks();
+
+
+function clone(obj){
+	function F(){};
+	F.prototype=obj;
+	return new F();
+}
+
+*/
+
+function father(name){
+	this.name=name;
+	this.age=100;
+}
+father.prototype.getName=function(){
+	console.log(this.name);
+}
+father.prototype.getAge=function(){
+	console.log('哈哈');
+}
+
+
+function son(name){
+	father.call(this,name);
+	this.age=50;
+	this.sex='girl';
+}
+son.prototype.getAge=function(){
+	console.log(this.age);
+}
+
+function extend(sonclass,fatherclass){
+	for(var attr in fatherclass.prototype){
+		sonclass.prototype[attr]=fatherclass.prototype[attr];
+	}
+}
+extend(son,father);
+
+son.prototype.getSex=function(){
+	L(this.sex);
+   }
+var sonobj=new son('子类');
+sonobj.getAge();
+sonobj.getSex();
+
+
+var faobj=new father('父类');
+faobj.getName();
 
 
 
