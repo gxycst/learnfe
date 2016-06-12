@@ -4,26 +4,9 @@
 	<meta charset="UTF-8">
 	<title>DejaVu Sans Mono</title>
 	<script>
-function A(s){alert(s)}function C(s){console.log(s)}function T(a,b){if(a===b){return console.log('全等!');}if(a==b){return console.log('表面等!')}return console.log('不等')}
-ast
-var Plane=function(){
-	this.blood=100;
-	this.attacklevel=1;
-	this.defenselevel=1;
-}
-var plane=new Plane();
-plane.blood=500;
-plane.attacklevel=10;
-plane.defenselevel=7;
+function A(s){alert(s);}function C(s){console.log(s);}function T(a,b){if(a===b){return console.log('全等!');}if(a==b){return console.log('表面等!')}return console.log('不等')}
+function tp(){switch(typeof arguments[0]){case 'string':return console.log(arguments[0]+'的类型为string');break;case 'number':return console.log(arguments[0]+'的类型为number');break;case 'boolean':return console.log(arguments[0]+'的类型为boolean');break;case 'undefined':return console.log(arguments[0]+'的类型为undefined');break;case 'function':return console.log(arguments[0]+'的类型为function');break;}return console.log(arguments[0]+'的类型为'+Object.prototype.toString.call(arguments[0]));}
 
-function clone(obj){
-	function F(){}
-	F.prototype=obj;
-	return new F();
-}
-
-var clonePlane=clone(plane);
-L(clonePlane.blood)
 	</script>
 </head>
 <body>

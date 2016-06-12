@@ -42,9 +42,12 @@ function addMethodForSomeClass(targetClass,commonClass){
 //原型继承
 
 function clone(obj){
-	function F(){}
-	F.prototype=obj;
-	return new F();
+	if(!('create' in Object)){
+		function F(){}
+	    F.prototype=obj;
+	   return new F();
+	}
+    return Object.create(obj);
 }
 
 //多继承
