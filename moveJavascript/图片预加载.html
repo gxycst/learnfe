@@ -5,11 +5,11 @@
 <title>无标题文档</title>
 <script>
 window.onload = function() {
-	//图片预加载，核心技术就是利用Image对象，利用给image对象的src赋值时，地址会被浏览器缓存的原理.
+	//图片预加载，核心技术就是利用Image对象，利用给image对象的src赋值时，地址会被浏览器缓存的原理.注意,new Imgage对象必须在js中设置src属性时，onload函数才会触发!new Imgage()对象就是一个创建出来的未被塞到body里面的img标签,只不过通过new 运算符会多了一些事件处理函数
 	var oImg = document.getElementById('img1');
 	
 	var oImage = new Image();
-	
+
 	var arr = [
 		'http://d.hiphotos.baidu.com/image/w%3D2048/sign=2846dc1369600c33f079d9c82e74500f/a044ad345982b2b7938726c333adcbef76099b98.jpg',
 		'http://f.hiphotos.baidu.com/image/w%3D2048/sign=2da141ad013b5bb5bed727fe02ebd439/7dd98d1001e9390124aacd3879ec54e736d1960f.jpg',

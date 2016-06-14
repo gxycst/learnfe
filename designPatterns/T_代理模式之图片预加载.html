@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+//关于new Imaged对象.类似于一个创建出来的Img标签，但会多一些事件处理属性，设置src后onload事件才可用
+var loadImgSrc='file:///E:/bz/loading.jpg';
+var loadImgInterNet='http://img.zcool.cn/community/0119825540f0dc0000002b01b9629b.jpg';
+
+
+
+//保护代理:A找B谈朋友,C来审查A等人,C此时过滤A等不良状态.C就是保护代理,js中无法判断是谁访问了某个对象，所以实现较为困难
+//虚拟代理:A找B谈朋友,C监控B的最佳状态并帮A求爱.js主要谈虚拟代理
+//var myimgDomId=document.querySelector('#myimgDomId');
+
+var myImage=(function(){
+	var imgNode=document.createElement('img');
+	document.body.appendChild(imgNode);
+	return {
+		setSrc:function(src){
+			imgNode.src=src;
+		}
+	}
+})();
+var proxyImage=(function(){
+	var img=new Image();
+	img.onload=function(){
+		myImage.setSrc(this.src);
+	}
+	return{
+		setSrc:function(src){
+			myImage.setSrc(loadImgSrc);
+			img.src=src;
+		}
+	}
+})();
+proxyImage.setSrc('someSrc');
+
+
+	</script>
+</html>
