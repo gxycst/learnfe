@@ -9,11 +9,12 @@
 	<meta name="viewport" id="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,target-densitydpi=device-dpi" /> 
 	<meta content="telephone=no" name="format-detection" />
 	<title>安卓划屏</title>
-	<link rel="stylesheet" type="text/css" href="css/Reset.css">
-	<script>document.getElementsByTagName('html')[0].style.fontSize=100*window.innerWidth/1080+'px';</script>
+		<script>
+		document.getElementsByTagName('html')[0].style.fontSize=100*document.getElementsByTagName('html')[0].offsetWidth/1080+'px';
+	</script>	
 <style>
 #picWrap{height:6rem;position:relative;}
-#picList{overflow: hidden;width:40.4rem;}
+#picList{overflow: hidden;width:40.4rem;height: 6rem;}
 #picWrap a{float:left;width:10.8rem;}
 #picWrap a img{width:10.8rem;height:6rem;}
 #roundSpan{width:6rem;position:absolute;bottom:0;right:0;}
@@ -307,10 +308,11 @@ function setCss3(obj, attr, value)
 </script>
 <section id="picWrap">
 	<nav id="picList">
-		<a href="javascript:void(0);"><img src="images/android1.jpg" alt=""></a>
-		<a href="javascript:void(0);"><img src="images/android2.jpg" alt=""></a>
-		<a href="javascript:void(0);"><img src="images/android3.jpg" alt=""></a>
-		<a href="javascript:void(0);"><img src="images/android4.jpg" alt=""></a>
+		<a href="javascript:void(0);"><img src="images/index_musicpptchm.jpg" alt=""></a>
+		<a href="javascript:void(0);"><img src="images/index_musicpptgo.jpg" alt=""></a>
+		<a href="javascript:void(0);"><img src="images/index_musicppthq.jpg" alt=""></a>
+		<a href="javascript:void(0);"><img src="images/index_musicpptry.jpg" alt=""></a>
+		<a href="javascript:void(0);"><img src="images/index_musicpptxld.jpg" alt=""></a>
 	</nav>
 	<div id="roundSpan">
 		<span class="active"></span>

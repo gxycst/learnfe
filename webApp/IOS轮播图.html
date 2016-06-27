@@ -8,10 +8,12 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta content="telephone=no" name="format-detection" />
 	<title>IOS轮播图特效</title>
-	<link rel="stylesheet" type="text/css" href="css/Reset.css">
-	<script src="js/portraitLandscape.js"></script>
-	<style>
+	<script>
+				document.getElementsByTagName('html')[0].style.fontSize=100*document.getElementsByTagName('html')[0].offsetWidth/1080+'px';
 
+	</script>
+	<style>
+*{padding: 0;margin:0;}
 body{
 		overflow: auto;
 	}
@@ -30,9 +32,19 @@ body{
 
 
 	</style>
-	<script>
-	// 微型运动框架
-
+	
+</head>
+<body>
+<section id="picWrap">
+<ul id="imgUl">
+	<li><img src="images/index_musicpptchm.jpg" alt=""></li>
+	<li><img src="images/index_musicpptgo.jpg" alt=""></li>
+	<li><img src="images/index_musicppthq.jpg" alt=""></li>
+	<li><img src="images/index_musicpptry.jpg" alt=""></li>
+	<li><img src="images/index_musicpptxld.jpg" alt=""></li>
+</ul>
+</section>
+<script>
 function startMove(obj,json,times,fx,fn,fnMove){
 	var iCur = {};
 	for(var attr in json){
@@ -192,22 +204,6 @@ window.onload=function(){
 
 
 	</script>
-</head>
-<body>
-<section id="picWrap">
-<ul id="imgUl">
-	<li><a href="javascript:void(0);"><img src="images/ios1.jpg" alt=""></a></li>
-	<li><a href="javascript:void(0);"><img src="images/ios2.jpg" alt=""></a></li>
-	<li><a href="javascript:void(0);"><img src="images/ios3.jpg" alt=""></a></li>
-	<li><a href="javascript:void(0);"><img src="images/ios4.jpg" alt=""></a></li>
-	<li><a href="javascript:void(0);"><img src="images/ios5.jpg" alt=""></a></li>
-</ul>
-</section>
-
-<div style="width: 10.8rem;height: 10rem;background: red;"></div>
-<div style="width: 10.8rem;height: 10rem;background: orange;"></div>
-<div style="width: 10.8rem;height: 10rem;background: yellow;"></div>
-<div style="width: 10.8rem;height: 10rem;background: green;"></div>
 </body>
 </html>
 

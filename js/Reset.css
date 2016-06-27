@@ -1,8 +1,7 @@
-﻿@charset "utf-8";
-body{background:#FFF}
+﻿body{background:#FFF}
 body,h1,h2,h3,h4,h5,h6,p,ul,ol,pre,dl,dd,th,td,form,input,select,textarea,div{ padding:0; margin:0;zoom:1}/*给所有块级元素都加上zoom:1争取触发haslayout，解决兼容*/
 /*input,textarea{outline: none;}*此条内容根据需求决定，添加之后就失去焦点线*/
-textarea{overflow: auto;resize:none/*默认边框*/;}
+textarea{overflow: auto;resize:none}
 table{border-collapse: collapse;/*清除行内外边距*/}
 img{ border:none; vertical-align:top}
 em{font-style:normal}
