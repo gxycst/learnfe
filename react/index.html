@@ -4,24 +4,21 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 <script src="js/react.js"></script>
-<script src="js/react-dom.js"></script>
-<script src="js/browser.min.js"></script>
-<script type="text/babel">
-var names=['a','b','c'];
-ReactDOM.render(
-	<div>
-		{
-			names.map(function(name){
-				return <div>Hello,{name}</div>
-			})
-		}
-	</div>,
-	document.getElementById('demo')
-	)
-
+<!-- <script src="js/react-dom.js"></script>
+<script src="js/browser.min.js"></script> -->
+<script>
+	var el=React.createElement(
+		'ul',
+		null,
+		React.createElement('li',null,'Korea')
+		React.createElement('li',null,'China'),
+		React.createElement('li',null,'Japan'),
+		)
 </script>
 </head>
 <body>
 <div id="demo"></div>
 </body>
-	</html>
+</html>
+
+

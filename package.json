@@ -4,6 +4,7 @@
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-uglify": "^1.0.1"
+    "grunt-contrib-uglify": "^1.0.1",
+    "webpack": "^1.13.1"
   }
 }
