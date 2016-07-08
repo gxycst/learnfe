@@ -1,1 +1,34 @@
-ReactDOM.render(标签,容器,回调);
+1.props,值是不可改变的.在表单中需要配合onChange.只能由父级往下传
+在表单元素中一旦给某个可改变的值使用了props值，就会报错,比如input[type='text']的value值设置为Props就会报错，这时需要给按钮绑定一个Onchange事件加函数，该函数和组件的render方法为并列关系.比如
+<input type="text" value={this.props.somPropsValue}>//报错
+<input type="text" defaultValue={this.props.somPropsValue}/>//ok 或者
+<input type="text" onChange={this.somePropsFunction} />//然后在组件内写入函数
+
+3.组件的状态.既然props无法改变，当我们需要做双向数据绑定时怎么办呢?这时就涉及到了state了,(状态发生改变时会用facebook的diff算法重新渲染render方法)基本格式:
+getInitialState:function(){
+	return {
+		message:this.props.somePropsValue//假使我们要对某个表单做双向数据绑定，该值是由props传递过来的，当然这只是其中的解决方案之一，还有更好的方案可以替代.见笔记4
+	}
+}
+
+<input type="text" value={this.state.someStateKey} onChange={this.changeText}/ >
+<p>{this.state.someStateKey}</p>
+//组件里这么写
+var someComponent=React.createClass({
+	getInitialState:function(){//get Initial State 取得最初状态
+		return {
+			someStateKey:this.props.somePropsValue
+		}
+
+	},
+	changeText:function(ev){
+
+		var newValue=ev.target.value;
+		this.setState({someStateKey:newValue});
+
+	}
+})
+4.引入带插件的React-with-addons.js
+mixins:[React.addons.LinkedStateMixin],//双向数据绑定插件
+此时<input type="text" value/>要改成 <input type="text" valueLink={this.linkState({someStateKey})}/>
+5.React.Children代替this.props.children,因为this.props.children 的值有三种可能：如果当前组件没有子节点,它就是 undefined;如果有一个子节点，数据类型是 object ；如果有多个子节点，数据类型就是 array

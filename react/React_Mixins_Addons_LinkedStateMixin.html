@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Document</title>
+	<script src="js/react-with-addons.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/browser.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script type="text/babel">
+	var formData={
+placeholaderValue:"请输入姓名"
+	};
+		var FormDataBindDobble=React.createClass({
+			mixins:[React.addons.LinkedStateMixin],
+			getInitialState:function(){
+				return {
+					stateMess:this.props.placeholaderValue
+				}
+			},
+			render:function(){
+				return (
+					<form action="#">
+					<h1>双向数据绑定示例</h1>
+						<input type="text" valueLink={this.linkState('stateMess')}/>
+						<p>{this.state.stateMess}</p>
+					</form>
+
+					)
+			}
+		})
+ReactDOM.render(<FormDataBindDobble {...formData}></FormDataBindDobble>,$('#demo')[0])
+	</script>
+</head>
+<body>
+	<div id="demo"></div>
+</body>
+</html>

@@ -60,7 +60,6 @@ DejaVu Sans Mono
 Inconsolata
 YaHei Consolas Hybrid
 microsoft Yahei Mono
-Calibri
 georgia
 segoe print
 inconsolata-g

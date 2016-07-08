@@ -1,5 +1,5 @@
 ﻿win10输入法中文无法输入 win+r--->ctfmon
-browser-sync start --server --files "*.html,*.js,*.css"
+browser-sync start --server --files "./*.html"
 chcp 437字体切换
 
 e2969ed5aadba469805a296ff4fa15a9

@@ -1,0 +1,98 @@
+1.npm install webpack -g 首先全局安装
+webpack -h查看版本信息
+然后用npm install webpack --save-dev 添加到当前项目依赖
+
+2.loader安装
+css处理:
+npm install css-loader style-loader --save-dev || npm i css-loader style-loader -D
+图片处理
+npm i url-loader -D
+exports-loader..暴露不支持模块化的全局变量
+loader写法:
+  { test:require.resolve('./某个需要暴露的文件名'), loader: "exports?Hello&暴露的方法名"},
+  在另一个文件引入该模块时,如果只暴露了一个方法直接方法名()，如果有多个方法,则是一个对象下的方法进行调用
+
+
+webpack --progress --colors 显示编译进度条
+webpack -p 压缩混淆
+webpack --watch ||webpack -w 监听并自动编译变化的部分
+npm i webpack-dev-server -D.监听当前文件变化
+
+webpack -c someconfig.js 指定某个配置文件
+
+
+按目录打包文件时，加上[name]实现文件名的key值输出路径，比如
+原目录为
+src/
+    example4.1.js
+    hello/
+        example4.2.js
+ 打包为:
+ dist/
+    example4.1.js
+    hello/
+        example4.2.js
+  则配置为:
+  entry:{
+    'example4.1':'./src/example4.1',
+    'hello/example4.2':'./src/hello/example4.2'
+},
+output:{
+    filename:'[name].js',//会解析entry对象中的key值，把有斜线的输出为路径
+    path:'./dist'
+}
+
+
+
+配置文件
+
+
+var webpack = require('webpack');
+var path=require('path');
+var buildPath=path.resolve(__dirname,'build');//打包后的目录
+var srcPath=path.resolve(__dirname,'src');//需要打包的文件目录
+var nodemodulesPath=path.resolve(__dirname,'node_modules');//模块查找目录
+var config={
+    entry:{
+        myFileKey:"myFileNamePath",
+        commonFileKey:["./jquery.js","./react.js"]//公共的js打包文件
+    },
+    resolve:{
+        extensions:['','.js','.jsx'],//当require模块找不到时添加这些后缀
+        root: srcPath, //查找module的话从这里开始查找,节省效率
+        alias:{
+            AppStore : 'js/stores/AppStores.js',//后续直接 require('AppStore') 即可
+            ActionType : 'js/actions/ActionType.js',
+            AppAction : 'js/actions/AppAction.js'     
+        }
+    },    
+    output:{
+        path:buildPath,
+        filename:"[name]bundle.js"//根据entry内的key值命名,只有写成json对象时[name]才能发挥作用
+    },
+        module:{
+        loaders:[
+ {
+              test: /\.js(x)*$/,
+              loader: 'babel-loader',
+              include: [
+                // 只去解析运行目录下的 src 和 demo 文件夹，以提高babel解析效率
+                path.join(process.cwd(), './src'),
+                path.join(process.cwd(), './demo')
+              ],//exclude:{}exclude排除的意思
+              query: {
+                  presets: ['react', 'es2015-ie', 'stage-1']//loader的参数 
+              }
+          }
+
+        ]
+    },
+    plugins:[
+new webpack.optimize.CommonsChunkPlugin({
+            name: "commonFileKey",//和上面配置的入口commonFileKey对应
+            filename:"jqueryandreact.js"//导出的公共Js文件的名称,也可以写作[name]形式
+        }),
+ new webpack.BannerPlugin('This file is created by zhaoda')//代码前的统一注释
+    ]
+}
+module.exports=config;

@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8"/>
 	<title>Document</title>
-<script src="js/react.js"></script>
-<!-- <script src="js/react-dom.js"></script>
-<script src="js/browser.min.js"></script> -->
-<script>
-	var el=React.createElement(
-		'ul',
-		null,
-		React.createElement('li',null,'Korea')
-		React.createElement('li',null,'China'),
-		React.createElement('li',null,'Japan'),
-		)
-</script>
+	<script src="js/react-with-addons.js"></script>
+	<script src="js/react-dom.js"></script>
+	<script src="js/browser.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script type="text/babel">
+	var Father=React.createClass({
+		render:function(){
+			return (
+			<div>
+			父组件
+			{this.props.children}
+			</div>
+				)
+		}
+	})
+	var Son=React.createClass({
+		render:function(){
+			return (
+				<h1>子组件</h1>
+				)
+		}
+	}) 
+	ReactDOM.render(<Father><Son></Son></Father>,$('#demo')[0]);
+
+	</script>
 </head>
 <body>
-<div id="demo"></div>
+	<div id="demo"></div>
 </body>
 </html>
-
-

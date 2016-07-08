@@ -1,4 +1,11 @@
-﻿1.淘宝配置
+﻿1.nrm
+
+npm install -g nrm  /切换多个版本的npm环境
+nrm ls列出可用的源,*为当前使用的源
+nrm use使用某个源
+nrm test npmName测试某个源的响应时间
+nrm test测试所有源的响应时间
+
 npm cache clean //清缓存
 npm update -g npm//更新npm
 npm i npmName -D  --save-dev简写为-D
@@ -10,12 +17,6 @@ gem sources --add http://gems.ruby-china.org/ --remove https://rubygems.org/
 
 
 
-
-npm install -g nrm  /切换多个版本的npm环境
-nrm ls列出可用的源,*为当前使用的源
-nrm use使用某个源
-nrm test npmName测试某个源的响应时间
-nrm test测试所有源的响应时间
 
 
 

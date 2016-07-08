@@ -2,9 +2,5 @@
   "name": "tjq_grunt_project_test",
   "version": "0.0.0",
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-uglify": "^1.0.1",
-    "webpack": "^1.13.1"
   }
 }
