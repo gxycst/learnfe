@@ -1,3 +1,5 @@
 ./react/js/
 ./react/node_modules/
 *.haha
+./commonCss/
+./commonJs/
