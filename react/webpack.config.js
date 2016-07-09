@@ -8,9 +8,7 @@ module.exports = {
   },
   module:{
     loaders: [
-    {test: /\.jsx?$/,loader: 'babel',query: {presets: ['es2015','react']},exclude: /node_modules/},
-    {test: /\.(png|jpg|gif)$/,loader: 'url-loader?limit=8192'},
-    {test: /\.css$/,loader: 'style!css'}
+    {test: /\.jsx?$/,loader: 'babel',query: {presets: ['es2015','react']},exclude: /node_modules/}
                 ]
            }
 };
