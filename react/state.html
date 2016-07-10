@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Document</title>
+	<script src="reactCommonJs/react-with-addons.js"></script>
+	<script src="reactCommonJs/react-dom.js"></script>
+	<script src="reactCommonJs/browser.min.js"></script>
+	<script src="reactCommonJs/jquery.js"></script>
+	<script type="text/babel">
+		var MessageBox= React.createClass({
+			getInitialState :function() {
+			    return {
+			    	isVaisible:true,
+			    	titleMessage:"你好,世界,(来自states)"
+			    };
+			},
+			render: function() {
+				var styleObj={
+					display:this.state.isVaisible?'block':'none'
+				}
+				return (
+					<div>
+					<h1 style={styleObj}>{this.state.titleMessage}!!!</h1>
+					</div>
+				);
+			}
+		});
+		var SubMessage=React.createClass({
+			render:function(){
+				return (
+					<h3>
+						'code is great!'
+					</h3>
+					)
+			}
+		});
+
+		ReactDOM.render(<MessageBox></MessageBox>,$('#demo')[0]);
+	</script>
+</head>
+<body>
+	<div id="demo"></div>
+</body>
+</html>

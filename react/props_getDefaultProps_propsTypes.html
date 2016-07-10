@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Document</title>
+	<script src="reactCommonJs/react-with-addons.js"></script>
+	<script src="reactCommonJs/react-dom.js"></script>
+	<script src="reactCommonJs/browser.min.js"></script>
+	<script src="reactCommonJs/jquery.js"></script>
+	<script type="text/babel">
+		var MessageBox= React.createClass({
+			getInitialState :function() {
+			    return {
+			    	isVaisible:true,
+			    	titleMessage:"你好,世界,(来自states)",
+			    	subMessages:[
+			    	'搬砖',
+			    	'花式搬砖',
+			    	'再次搬砖'
+			    	]
+			    };
+			},
+			render: function() {
+				return (
+					<div>
+					<h1>{this.state.titleMessage}</h1>
+					<SubMessage messages={this.state.subMessages}></SubMessage>
+					</div>
+				);
+			}
+		});
+		var SubMessage=React.createClass({
+			propsTypes:{
+				/*必填*/
+				messages:React.PropTypes.array.isRequired
+			},
+			getDefaultProps :function() {
+			    return {
+			          messages:['默认的props消息，如果父组键不传递数据，则显示为默认的props消息，如果传递了则显示为传递的消息']
+			    };
+			},
+			render:function(){
+			var propsArr=[];
+			this.props.messages.map(function(ele,key){
+				propsArr.push(<p key={key}>{ele}</p>)
+			});
+				return (
+                                                   <div>
+		                              {propsArr}
+                                                  </div>
+					)
+			}
+		});
+
+		ReactDOM.render(<MessageBox></MessageBox>,$('#demo')[0]);
+	</script>
+</head>
+<body>
+	<div id="demo"></div>
+</body>
+</html>
