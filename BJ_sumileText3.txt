@@ -24,6 +24,8 @@ ColorSublime 主题预览
 ClickableURLs url加下划线并可点击
 Tag 标签格式化 ctrl+alt+f
 CSS3 css3插件
+jsx支持jsx语法
+Better coffeeScript :sublime text3 coffeeScript插件,常用快捷键:alt+shift+r编译并打印到控制台;alt+shift+c编译一个文件;alt+shift+w会新建一个临时窗口显示coffee和js并实时编译;
 
 
 3.自定义配置
