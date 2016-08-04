@@ -1,5 +1,7 @@
-﻿1.控制台代码:
+1.控制台代码:
 import  urllib.request,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));open(os.path.join(ipp,pf),'wb').write(urllib.request.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+
+
 
 
 2.常用插件
@@ -111,3 +113,27 @@ browser-sync start --proxy "myproject.dev" --files "css/*.css"  #启动动态网
 
 ast:常用调试函数
 
+
+
+
+
+8.mac下将subl加入iterm2等工具进行终端启动步骤
+
+
+先看一下使用下面的命令打开你的sublime：
+
+ open /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl
+
+设置一个连接到sublime，名字叫subl：
+
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+
+打开.bash_profile输入下面的内容(在~目录下打开,没有就新建)：
+
+alias subl="open -a /Applications/Sublime\ Text.app"
+
+export PATH=/usr/local/bin:$PATH
+
+最后重新加载一下bash_profile
+
+source ~/.bash_profile
