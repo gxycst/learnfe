@@ -1,0 +1,6 @@
+1.安装vue管理工具  npm install -g vue-cli
+2.使用vue管理工具初始化一个vue项目,注意项目命名时不能包含大写字母:vue init webpack my-first-vue-project,经过一系列类似于npm 的package.json处理文件之后初始化一个vue项目wanc
+3.然后使用npm install 安装vue的各种依赖，推荐使用sudo cnpm比较快。
+
+
+
