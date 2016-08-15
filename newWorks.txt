@@ -1,0 +1,10 @@
+https://www.qcloud.com/product/im.html#sdk
+
+
+https://github.com/netease-im/NIM_Web_Demo
+
+https://github.com/netease-im/NIM_Web_UIKit
+
+http://dev.netease.im/docs?doc=web_demo
+
+http://dev.netease.im/docs?doc=web#多端登录初始化参数
