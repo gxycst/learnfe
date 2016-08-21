@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="userInfoModule">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="framework/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="framework/bootstarpmin.css">
+	<script type="text/javascript" src="js/userInfoModule.js"></script>
+</head>
+<body>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<div class="panel-title">
+				双向数据绑定
+			</div>	
+		</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<form class="form-horizontal" role="form" ng-controller="UserInfoCtrl">
+							<div class="form-group">
+								<label class="col-md-2 control-label">邮箱</label>
+								<div class="col-md-10">
+								<input type="email" name="" placeholder="请输入邮箱" class="form-control" ng-model="userInfo.email">
+								</div>
+							</div>
+								<div class="form-group">
+									<label class="col-md-2 control-label">密码</label>
+									<div class="col-md-10">
+										<input type="password" name="" placeholder="密码" class="form-control" ng-model="userInfo.password">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-10 col-md-offset-2">
+										<div class="checkbox">
+										  <label>
+										  	 <input type="checkbox" name="" ng-model="userInfo.autoLogin">自动登录
+										  </label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-10 col-md-offset-2">
+										<button  class="btn btn-default" ng-click="getFormData()">控制台打印值</button>
+										<button  class="btn btn-default" ng-click="setFormData()">设置表单值</button>
+										<button  class="btn btn-default" ng-click="resetFormData()">重置表单的值</button>
+									</div>
+								</div>
+						</form>
+					</div>
+				</div>
+			</div>	
+
+	</div>
+</body>
+</html>

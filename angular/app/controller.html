@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="angularApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+</head>
+<body>
+<div ng-controller="CommonController">
+	<div ng-controller="Controller1">
+	  <p>Hello{{greeting.text}}</p>
+	  <input type="button" name="" value="点击我弹出控制器1" ng-click="test1()">
+	</div>
+	<div ng-controller="Controller2">
+	  <p>Hello{{greeting.text}}</p>
+	  <input type="button" name="" value="点击我弹出控制器2" ng-click="test2()">
+	</div>
+
+	<button type="button" ng-click="commonFn()">通用的控制器方法</button>
+</div>
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script>
+	var myAngularModule=angular.module('angularApp',[]);
+    myAngularModule.controller('CommonController', ['$scope', function(s){
+    	s.commonFn=function(){
+    		alert('我是通用控制器方法!');
+    	}
+    }])
+    myAngularModule.controller('Controller1',['$scope',function(s){
+    	s.greeting={
+    		text:"控制器1"
+    	}
+    	s.test1=function(){
+    		alert('我是'+s.greeting.text);
+    	}
+    }])
+    myAngularModule.controller('Controller2',['$scope',function(s){
+    	s.greeting={
+    		text:"控制器2"
+    	}
+    	s.test2=function(){
+    		alert('我是'+s.greeting.text);
+    	}
+    }])
+    
+		
+	</script>
+</body>
+</html>

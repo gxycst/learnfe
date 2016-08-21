@@ -1,0 +1,5 @@
+这里存放着软件包。
+angular
+angular-animate
+bootstrap
+angular-router等	,虽然这个路由并不推荐使用.
