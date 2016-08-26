@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>不嵌套组件注册的两种方式!</title>
+  <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+  <div id="app">
+  <!--只能在模板中嵌套-->
+    <first-component></first-component>	
+    <second-component></second-component>
+  </div>
+<script type="text/javascript">
+//注册方法一:
+
+var FirstComponent=Vue.extend({//定义
+  template:"<div>我是第一个不嵌套的组件!</div>"
+});
+
+Vue.component('first-component',FirstComponent);//注册
+
+
+//注册方法二,省略extend函数
+Vue.component('second-component',{
+  template:'<div>我是第二个不嵌套的组件</div>'
+});
+
+
+
+  new Vue({
+  	el:'#app'	//渲染
+  })
+</script>
+</body>
+</html>
