@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+  <div id="app">
+
+  <father-component></father-component>  
+  <father-component2></father-component2>
+  </div>
+<script type="text/javascript">
+
+//注册方法一
+//注册一个子组件
+var SonComponent=Vue.extend({
+	template:'<div style="color:red;font-size:18px;">我是一个子组件!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</div>'
+})
+
+var ParentComponent=Vue.extend({
+	template:'<div>我是一个父组件<son-component></son-component></div>',
+	components:{
+		'son-component':SonComponent
+	}
+})
+Vue.component('father-component',ParentComponent);
+
+//注册方法二
+
+
+
+// 局部注册也可以这么做
+var Parent = Vue.extend({
+	template:'<div>我又是一个父组件<my-component></my-component></div>',
+    components:{
+    'my-component':{
+      template: '<div>又是一个子组件! </div>'
+    }
+  }
+})
+
+//Vue.component('father-component2',Parent);
+Vue.component('father-component2',{
+	template:'<div>我又是一个父组件<my-component></my-component></div>',
+    components:{
+    'my-component':{
+      template: '<div>又是一ss个子组件!</div>'
+    }
+  }
+});
+
+var vm=new Vue({
+    el:'#app',
+    data:{
+     
+    }
+  })
+</script>
+</body>
+</html>

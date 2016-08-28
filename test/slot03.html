@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+<h3>具名Slot</h3>
+<template id="child02">
+	<slot name="s1"></slot>
+	<slot></slot>
+	<slot name="s2"></slot>
+</template>
+<div id="dr02">
+	<child02>
+		<div slot="s1">
+			这是slot01
+		</div>
+		<div slot="s2">
+			这是slot02
+		</div>
+		<div>
+			这是一个简单的div01
+		</div>
+		<div>
+			这是一个简答的div02
+		</div>
+	</child02>
+</div>
+</body>
+<script type="text/javascript">
+	var child02=Vue.extend({
+		template:'#child02'
+	});
+	var dr02=new Vue({
+		el:"#dr02",
+		components:{
+			"child02":child02
+		}
+	})
+</script>
+</html>		

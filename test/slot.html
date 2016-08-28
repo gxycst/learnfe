@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<child01></child01>
+	<child01><div>这里是新的分发内容1</div><div>这里是新的分发内容2</div></child01>
+	</div>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:'#app',
+			components:{
+				'child01':{
+					template:'<h1>slot使用!</h1><slot>如果没有分发内容，这里会被显示!</slot>'
+				}
+			}
+		});
+	</script>
+</body>
+</html>		

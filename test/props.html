@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+	<div id="app">
+	<input type="text" v-model="number">
+<first-component :number="1"></first-component>
+		<button type="button" v-on:click="getType"></button>
+	</div>
+	<script type="text/javascript">
+		var Component=Vue.extend({
+			props:{
+				propsA:Number
+			},
+			template:"<div>{{number}}</div>"
+		});
+		Vue.component('first-component',Component);
+		var vm=new Vue({
+			el:'#app',
+			data:{
+			number:0
+			},
+			methods:{
+				getType:function(){
+					console.log(Object.prototype.toString.call(this.number));
+				}
+			}
+		});
+	</script>
+</body>
+</html>		

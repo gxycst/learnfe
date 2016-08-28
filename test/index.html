@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="vue.js"></script>
+	<div id="app">
+	  <h1>a现在的值是{{a}}</h1>
+		<input type="button" name="" v-on:click="addValue" value="A++ClickButton">
+	 <h1>a之前的值是{{oldVal}}</h1>
+	</div>
+</head>
+<body>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				a:1,
+				oldVal:1
+			},
+			methods:{
+				addValue:function(){
+					this.a++;
+				}
+			},
+			watch:{
+				'a':function(newVal,oldVal){
+					this.oldVal=oldVal;
+					console.log('现在a的值是'+newVal+'\n');
+					console.log('之前a的值是'+oldVal);
+				}
+			}
+
+		});
+	</script>
+</body>
+</html>

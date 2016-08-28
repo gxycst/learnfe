@@ -2,10 +2,24 @@
 import  urllib.request,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));open(os.path.join(ipp,pf),'wb').write(urllib.request.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
 
 
+mac使用技巧
+
+cmd+d选中同名字字符,ctrl+cmd+g选中所有同名字符
+option+cmd+n命令行添加文件
+cmd+shift+k选中当前标签编辑
+cmd+shift+空格 选中当前作用域内文字，再次按可以往外延伸
+
+
+
 
 
 2.常用插件
 Emmet
+Better Completion更好的代码提示
+BufferScroll代码折叠状态保留
+
+ChineseLocalization汉化插件
+Color Highlighter css颜色高亮
 AdvancedNewFile:命令行添加文件
 Emmet Css Snippets　.css文件支持代码补全
 HTMLAttributes:   html属性标签提示
@@ -21,7 +35,7 @@ DocBlockr 快速添加注释
 AutoFileName 显示路径
 BracketHighlighter 侧边栏括号提示
 JsFormat和CSSFormat   js,css,代码格式化
-SideBarEnhancements 浏览器预览
+SideBarEnhancements 浏览器预览,增强侧边栏
 ColorSublime 主题预览
 ClickableURLs url加下划线并可点击
 Tag 标签格式化 ctrl+alt+f
@@ -52,7 +66,8 @@ Preferences ->keybindings-User
 	],
 	"line_padding_bottom": 5,
 	"line_padding_top": 5,
-        "word_wrap": true
+    "word_wrap": true,
+    "highlight_modified_tabs": true,
 }
 
 自定义代码块 Data ->Packages ->User 文件夹下，后缀名为.sublime-snippet
