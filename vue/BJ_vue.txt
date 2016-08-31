@@ -45,9 +45,9 @@ v-else元素是否渲染在HTML中，取决于前面使用的是v-if还是v-show
 v-bind指令可以在其名称后面带一个参数，中间放一个冒号隔开，这个参数通常是HTML元素的特性（attribute），例如：v-bind:class
 
 
-
+项目地址
 https://github.com/bluefox1688/vue-cli-multi-page
-
+https://github.com/wendaosanshou/mi-by-vue.git
 
 
 
