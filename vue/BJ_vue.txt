@@ -1,5 +1,7 @@
 1.安装vue脚手架工具  npm install -g vue-cli
 
+
+安装npm i vue-resource vue-router --save  路由和AJAX插件 简写 npm i vue-resource vue-router -S
 2.使用vue管理工具初始化一个vue项目,注意项目命名时不能包含大写字母:vue init webpack my-first-vue-project,经过一系列类似于npm 的package.json处理文件之后初始化一个vue项目。webpack表示该项目使用webpack进行管理打包
 所有的单元测试集成都不需要.
 
@@ -41,6 +43,10 @@ v-else元素是否渲染在HTML中，取决于前面使用的是v-if还是v-show
 这段代码中v-if为true，后面的v-else不会渲染到HTML；v-show为tue，但是后面的v-else仍然渲染到HTML了。
 
 v-bind指令可以在其名称后面带一个参数，中间放一个冒号隔开，这个参数通常是HTML元素的特性（attribute），例如：v-bind:class
+
+
+
+https://github.com/bluefox1688/vue-cli-multi-page
 
 
 
