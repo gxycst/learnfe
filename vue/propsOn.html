@@ -6,21 +6,40 @@
 	<script type="text/javascript" src="vue.js"></script>
 </head>
 <body>
+    <template id="mytemplate">
+    	<input type="text"  v-model="msg">
+    	<input type="button" @click="addMsg">
+    </template>
 	<div id="app">
-		<div id="events-example">
-			<p>Message:{{message|json}}</p>
-			<child></child>
-		</div>
+	    <p>{{messages|json}}</p>
+		<child v-on:child-msg="testFun"></child>
 	</div>
 	<script type="text/javascript">
-	var Template=Vue.extend({
-		template:"<input v-model='msg'><button v-on:click='notify'>ClickMe!</button>"
-	});
-	Vue.component('template',Template);
+	Vue.component('child',{
+		template:'#mytemplate',
+		data:function(){
+			return {msg:'1'}
+		},
+		methods:{
+			addMsg:function(){
+				if(this.msg.trim()){
+					this.$dispatch('child-msg',this.msg);
+				}
+			},
+			testFun:function(){
+				console.log('hello,!!!!');
+			}
+		}
+	})
 		var vm=new Vue({
 			el:'#app',
 			data:{
-			
+				messages:[]
+			},
+			events:{
+				'child-msg':function(msg){
+					this.messages.push(msg);
+				}
 			}
 		});
 	</script>
