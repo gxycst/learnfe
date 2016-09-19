@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+function C(obj,types){switch(types){case 'r':console.log('%c您要打印的值为'+obj,'background:red;color:black;font-size:18px;');break;case 'g':console.log('%c您要打印的值为'+obj,'background:green;color:white;font-size:18px;');break;case 't':console.log('%c您要打印的值的类型为'+Object.prototype.toString.call(obj),'background:blue;color:white;font-size:18px;');break;default:console.log(obj);}}
+${1}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>C</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
