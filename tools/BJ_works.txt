@@ -1,8 +1,15 @@
-﻿win10输入法中文无法输入 win+r--->ctfmon
-browser-sync start --server --files "./*.html"
+﻿去除 favicon图标请求干扰
+<link rel="shortcut icon"type="image/x-icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+
+
+win10输入法中文无法输入 win+r--->ctfmon
+browser-sync start --server --files "./*.html",--->windows下最好用双引号,单引号有bug
 chcp 437字体切换
 
 e2969ed5aadba469805a296ff4fa15a9
+
+
+
 
 省略号
 {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
