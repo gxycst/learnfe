@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>{{message}}</p>
+  <button type="button" v-on:click="greet">弹出!</button>
+</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+  el: '#app',
+  data: {
+    name: 'Vue.js'
+  },
+  // 在 `methods` 对象中定义方法
+  methods: {
+    greet: function (event) {
+      // 方法内 `this` 指向 vm
+      alert('Hello ' + this.name + '!')
+      // `event` 是原生 DOM 事件
+      alert(event.target.tagName)
+    }
+  }
+})
+
+// 也可以在 JavaScript 代码中调用方法
+vm.greet() // -> 'Hello Vue.js!'
+	</script>
+</body>
+</html>

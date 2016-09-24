@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+   <!--
+需求:添加留言,删除留言!
+   -->
+  <div id="app">
+  	 <input type="text" name="" placeholder="请输入留言" v-on:keyup.enter="addUserWord" v-model="userMsg">
+  	 <ul>
+  	 	<li v-for="userword in userwords">
+  	 		<span>{{userword.text}}</span>
+  	 		<input type="button" value="删除留言" v-on:click="removeUserWord($index)">
+  	 	</li>
+  	 </ul>
+  </div>
+<script type="text/javascript">
+	new Vue({
+		el:'#app',
+		data:{
+			userMsg:'',
+			userwords:[
+			 {text:'用户留言1'}
+			]
+
+		},
+		methods:{
+			addUserWord:function() {
+				var text=this.userMsg.trim();
+				if(text){
+					this.userwords.push({text:text});
+					this.userMsg='';
+				}
+
+			},
+			removeUserWord:function(index) {
+				this.userwords.splice(index,1);
+			}
+
+		}
+
+	})
+</script>
+
+	
+</body>
+</html>
