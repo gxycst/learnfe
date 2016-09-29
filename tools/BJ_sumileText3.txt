@@ -95,6 +95,9 @@ Clacier
 
 华丽主题:
 setUI
+在配置文件中加一句{"theme": "Seti.sublime-theme"}然后使用Inziu Iosevka SC特别好看.
+
+cmder中,使用 monaco for powerline比较好看.
 
 
 
