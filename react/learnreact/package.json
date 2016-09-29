@@ -1,0 +1,22 @@
+{
+  "name": "react-learn",
+  "version": "1.0.0",
+  "description": "react learn fe",
+  "main": "webpack.config.js",
+  "dependencies": {},
+  "devDependencies": {
+    "html-webpack-plugin": "^2.22.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "tjq",
+  "license": "ISC"
+}
