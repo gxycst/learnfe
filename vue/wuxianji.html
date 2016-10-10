@@ -1,0 +1,145 @@
+
+<html id="app">
+
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+        <style>
+            li {
+                padding: 0.2em 0.5em;
+            }
+            .tree {
+                background-color: #EFEFEF;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>{{ title }}</h1>
+        <h2>树：</h2>
+        <div class="tree">
+            <tree :node="rootNode"></tree>
+        </div>
+
+        <h2>JSON：</h2>
+        <textarea style="width:100%; height:20em;">{{ tree_json }}</textarea>
+    </body>
+<html>
+
+<script src="http://cdn.bootcss.com/vue/1.0.17/vue.min.js"></script>
+
+<script>
+    var TreeNode = Vue.extend({
+        data: function(){
+            return {
+                show_oprators: false,
+                is_draged: false,
+            }
+        },
+        name: 'tree-node',
+        props: ['node'],
+        template: `
+        <li draggable="true" @dragstart.stop="handleDragStart($event)" @dragenter="handleDragEnter" @dragleave="handleDragLeave" @dragover.prevent="handleDragOver" @drop.stop="handleDrop($event)" @dragend.prevent="handleDragEnd">
+            <span @mouseenter="showOprators" @mouseleave="hideOprators">
+                <a @click="toggle">{{node.name}}</a>
+                <small v-if="show_oprators">
+                    <a @click="editNode" href="#">edit</a> | <a @click="removeNode" href="#">remove</a> | <a @click="addNode" href="#">add</a>
+                </small>
+            </span>
+            <ul v-show="node.children.length"><tree-node v-for="node in node.children" :node.sync="node"></tree-node></ul>
+        </li>`,
+        methods:{
+            handleDrop: function(e){
+                var vm = window.__drop_node__;
+
+                this.$el.style.backgroundColor = '';
+                vm.$el.style.backgroundColor = '';
+
+                var __parent__ = this;
+                while (__parent__ !== undefined){
+                    if (__parent__ === vm){
+                        return;
+                    }
+                    __parent__ = __parent__.$parent;
+                }
+                
+                var current_node = vm.node;
+                vm.$parent.node.children = vm.$parent.node.children.filter(function(node){
+                    return node !== current_node;
+                });
+                this.node.children.push(current_node);
+
+            },
+            handleDragEnd: function(){
+                this.$el.style.backgroundColor = '';
+            },
+            handleDragStart: function(e){ 
+                this.show = false;
+                this.is_draged = true;
+                window.__drop_node__ = this;
+                this.$el.style.backgroundColor = 'grey';
+            },
+            handleDragEnter: function(){ if(!this.is_draged) this.$el.style.backgroundColor = "yellow"; },
+            handleDragLeave: function(){ if(!this.is_draged) this.$el.style.backgroundColor = ""; },
+            handleDragOver: function(){},
+
+            showOprators: function(){ this.show_oprators = true; },
+            hideOprators: function(){ this.show_oprators = false; },
+
+            addNode: function(){
+                var name = prompt("Input the name of new node", "new node");
+                if (!!name && !!name.trim()){
+                    this.node.children.push({name: name.trim(), children:[]});
+                }
+            },
+            removeNode: function(){
+                if (confirm('Do you want to remove node: ' + this.node.name)){
+                    var current_node = this.node;
+                    this.$parent.node.children = this.$parent.node.children.filter(function(node){
+                        return node !== current_node;
+                    });
+                }
+            },
+            editNode: function(){
+                var name = prompt("Input the name of new node", this.node.name);
+                if (!!name && !!name.trim()){
+                    this.node.name = name.trim();
+                }
+            }
+        }
+    });
+
+    var Tree = Vue.extend({
+        name: 'tree',
+        props: ['node'],
+        components: {
+            'tree-node': TreeNode
+        },
+        template: '<ul><tree-node :node.sync="node"></tree-node><ul>',
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            rootNode: {
+                name: 'Root',
+                children: [
+                    {name: 'A', children:[{name: 'A1', children:[]}, {name: 'A2', children:[]}]},
+                    {name: 'B', children:[{name: 'B1', children:[]}, {name: 'B2', children:[]}]},
+                    {name: 'C', children:[{name: 'C1', children:[]}, {name: 'C2', children:[]}]},
+                ]
+            },
+
+            title: 'Vue 无限层级树增删改以及拖拽节点'
+        },
+        computed: {
+            tree_json: function(){
+                return JSON.stringify(this.rootNode);
+            }
+        },
+        components: {
+            'tree': Tree
+        },
+    });
+
+</script>
