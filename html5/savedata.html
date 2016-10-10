@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet">
+		<link rel="shortcut icon" type="image/x-icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+		
+		<script>
+			//localStorage本地永久存储
+			//sessionStorage在一个窗口中存储,关闭浏览器或窗口后消失。两者都是针对同一个域名下的，跨域跨设备跨浏览器之间不能读取数据。
+
+
+		</script>
+</head>
+<body>
+<div class="form-group col-md-6">
+	<input type="text" name="" class="form-control" placeholder="Enter you username" id="enterUserName">
+</div>
+<input type="button"  class="btn btn-primary" value="click save your name" id="clickSave">
+<script>
+	var enterUserName=document.getElementById('enterUserName');
+	var clickSave=document.getElementById('clickSave');
+	var testnum=0;
+	localStorage.clear();
+console.log(window.localStorage);
+
+
+</script>
+</body>
+</html>

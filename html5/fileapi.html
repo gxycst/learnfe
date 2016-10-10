@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <style>
+    * {
+        padding: 0;
+        margin: 0
+    }
+    
+    input[type="file"] {
+        display: none
+    }
+    
+    #fileOut {
+        width: 200px;
+        height: 100px;
+        border: 1px solid blue;
+        border-radius: 10px;
+    }
+    
+    #fileOuts {
+        width: 200px;
+        height: 100px;
+        border: 1px solid red;
+        border-radius: 10px;
+    }
+    
+    .wrap {
+        margin-top: 10px
+    }
+#dropBox{
+	margin-top: 15px;
+	width: 300px;
+	height: 300px;
+	border: 5px dashed gray;
+	border-radius: 8px;
+	background: lightyellow;
+	background-size:100%;
+	background-repeat: no-repeat;
+	text-align: center;  
+}
+
+#dropBox div{
+	margin: 100px 70px;
+	color: orange;
+	font-size: 25px;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="file" id="fileInput">
+        <input type="button" name="" class="btn btn-primary" value="上传并读取一个文件内容" id="clickReadFile">
+    </div>
+    <div id="fileOut">
+    </div>
+    <div class="wrap">
+        <input type="file" id="fileInputs" multiple>
+        <input type="button" name="" class="btn btn-primary" value="上传并读取多个文件内容" id="clickReadFileMore">
+        <div id="fileOuts">
+        </div>
+    </div>
+
+    <div id="dropBox">
+    	<div>
+    		Drop your imgage here
+    	</div>
+    </div>
+    <script>
+    var clickReadFile = document.getElementById('clickReadFile');
+    clickReadFile.onclick = function() {
+        var fileDom = document.getElementById('fileInput');
+        fileDom.click(); //用js模拟用户点击file标签
+        fileDom.onchange = function() { //如果用户选择了某个文件
+            var file = this.files[0]; //取得当前操作的文件对象
+            var reader = new FileReader(); //创建文件读取对象。这个对象的方法是异步的，也就是说可以不必等待数据而立即读取,所以要加上onload事件
+            reader.onload = function(e) {
+                var output = document.getElementById('fileOut');
+                output.textContent = e.target.result;
+            }
+            reader.readAsText(file); //readAsText把文件内容转成长字符串并保存在onload事件的e.target.result中.类似的还有:
+            /*
+            readAsBinaryString(处理二进制数据),readAsDataURL(读取图片数据),readAsArrayBuffer(处理二进制数据,这个效果更好)
+            */
+
+        }
+
+    }
+
+//读取多个文件
+
+var clickReadFileMore=document.getElementById('clickReadFileMore');
+clickReadFileMore.onclick=function(){
+	var fileDom=document.getElementById('fileInputs');
+	fileDom.click();
+	fileDom.onchange=function(){
+
+		for(var i=0,l=this.files.length;i<l;i++){
+			var file=this.files[i];
+			var reader=new FileReader();
+			reader.onload=function(e){
+				var output=document.getElementById('fileOuts');
+				output.textContent+=e.target.result;
+			}
+			reader.readAsText(file);
+		}
+
+	}
+}
+
+var dropBox;
+function ignoreDrag(e){
+	e.preventDefault();
+	e.stopPropagation();
+}
+function drop(e){
+	e.stopPropagation();
+	e.preventDefault();
+	var data=e.dataTransfer;//DataTransfer 对象用来保存被拖动的数据
+	var files=data.files;
+	processFiles(files);
+}
+dropBox=document.getElementById('dropBox');
+dropBox.ondragenter=ignoreDrag;
+dropBox.ondragover=ignoreDrag;
+dropBox.ondrop=drop;
+
+
+//拖拽读取图片
+
+
+    </script>
+</body>
+
+</html>

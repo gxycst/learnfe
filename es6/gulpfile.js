@@ -1,3 +1,4 @@
+//这只是个gulp的例子，实际上要让浏览器运行es6还需要进行模块化处理比如browserify等等，实际情况下我一般用webpack来处理es6.
 //1全局和开发环境安装gulp -> npm install -g gulp ,-> npm install gulp --save-dev
 //2安装babel插件 npm install --save-dev gulp-babel
 //3安装es6转es5插件  npm install --save-dev babel-preset-es2015
@@ -7,7 +8,7 @@ var babel = require("gulp-babel");
 
 gulp.task("es6toes5", function () {
   return gulp.src("src/**/*.js")// ES6 源码存放的路径
-    .pipe(babel()) 
+    .pipe(babel({{presets: ['es2015']}})) 
     .pipe(gulp.dest("dist")); //转换成 ES5 存放的路径
 });
 gulp.task("watch",function(){
