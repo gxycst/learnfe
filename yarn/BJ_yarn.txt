@@ -1,0 +1,8 @@
+1.安装 npm install -g yarn
+2. 执行yarn,默认安装package.json文件依赖.
+3.换源
+ yarn config set registry "https://npm.taobao.org/"
+ 
+4.添加依赖 yarn add modulename@xxxx.等同于 npm install --save
+移除依赖yarn remove gulp-less 
+更新依赖yarn upgrade [package]
