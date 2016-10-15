@@ -8,7 +8,7 @@ chcp 437字体切换
 
 e2969ed5aadba469805a296ff4fa15a9
 
-
+browser-sync start --server --files "**/*.css, **/*.html, **/*.js"
 
 
 省略号
