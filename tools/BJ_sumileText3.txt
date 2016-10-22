@@ -70,7 +70,9 @@ Preferences ->keybindings-User
 	"line_padding_top": 5,
     "word_wrap": true,
     "highlight_modified_tabs": true,
-    "bold_folder_labels":true
+    "bold_folder_labels":true,
+    "file_exclude_patterns":["*.pyc", "*.pyo", "*.exe"],
+	"folder_exclude_patterns": ["node_modules"],
 }
 
 自定义代码块 Data ->Packages ->User 文件夹下，后缀名为.sublime-snippet
