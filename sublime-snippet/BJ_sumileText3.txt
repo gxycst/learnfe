@@ -15,7 +15,6 @@ cmd+shift+空格 选中当前作用域内文字，再次按可以往外延伸
 
 2.常用插件
 Emmet
-Better Completion更好的代码提示
 BufferScroll代码折叠状态保留
 
 ChineseLocalization汉化插件
