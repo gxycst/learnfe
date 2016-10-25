@@ -16,7 +16,6 @@ cmd+shift+空格 选中当前作用域内文字，再次按可以往外延伸
 2.常用插件
 Emmet
 BufferScroll代码折叠状态保留
-
 ChineseLocalization汉化插件
 Color Highlighter css颜色高亮
 AdvancedNewFile:命令行添加文件
@@ -40,6 +39,7 @@ ClickableURLs url加下划线并可点击
 Tag 标签格式化 ctrl+alt+f
 CSS3 css3插件
 jsx支持jsx语法
+bootstrap3 3 autocomplete 可以提醒bootstrap的类
 Better coffeeScript :sublime text3 coffeeScript插件,常用快捷键:alt+shift+r编译并打印到控制台;alt+shift+c编译一个文件;alt+shift+w会新建一个临时窗口显示coffee和js并实时编译;
 html-css-js prettify 代码格式化.
 
@@ -80,14 +80,11 @@ Preferences ->keybindings-User
 4.美化
 4.1个人防疲劳常用字体
 DejaVu Sans Mono
-Inconsolata
 YaHei Consolas Hybrid
-microsoft Yahei Mono
-georgia
-segoe print
 inconsolata-g
 Inziu Iosevka SC
 Fira Code
+
 Diffy:开启对比CTRL+K, CTRL+D,取消对比: CTRL+K, CTRL+C (alt+shift+数字)开启多个窗口
 4.2常用主题:
 Ksix
