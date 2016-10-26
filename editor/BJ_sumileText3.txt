@@ -75,6 +75,22 @@ Preferences ->keybindings-User
 	"folder_exclude_patterns": ["node_modules"],
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 自定义代码块 Data ->Packages ->User 文件夹下，后缀名为.sublime-snippet
 
 
@@ -100,6 +116,46 @@ Clacier
 华丽主题:
 setUI
 在配置文件中加一句{"theme": "Seti.sublime-theme"}然后使用Inziu Iosevka SC特别好看.
+
+setUI设置:
+
+	"Seti_accent": true,
+	"Seti_accent_indigo": true,
+	"Seti_accent_lime": true,
+	"Seti_accent_purple": true,
+	"Seti_accent_red": true,
+	"Seti_accent_teal": true,
+	"Seti_accent_yellow": true,
+	"Seti_blue_scrollbar": true,
+	"Seti_bold_slctdfile_labels": true,
+	"Seti_bold_slctdtab_labels": true,
+	"Seti_red_map": true,
+	"Seti_show_group_arrows": true,
+	"Seti_teal_label": true,
+	"Seti_top_heading_anim": true,
+	"Seti_top_heading_big": true,
+	"bold_folder_labels": true,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 cmder中,使用 monaco for powerline比较好看.
 
@@ -170,30 +226,7 @@ export PATH=/usr/local/bin:$PATH
 source ~/.bash_profile
 
 
-material-theme主题
-
-https://github.com/equinusocio/material-theme
 
 
-普通
-"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
-"theme": "Material-Theme.sublime-theme",
-
-暗黑
-"theme": "Material-Theme-Darker.sublime-theme","color_scheme": 
-"Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
-
-白色
-"theme": "Material-Theme-Darker.sublime-theme","color_scheme": 
-"Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 
 
-主题配置
-
-"material_theme_big_fileicons"            : true , // icon图标加大
-"material_theme_accent_acid-lime"         : true , // 高亮当前文件和文件夹
-"material_theme_accent_sky"               : true , // 蓝色高亮
-"material_theme_accent_brba"              : true , // 绿色高亮
-"material_theme_contrast_mode"            : true , // 左边更黑
-"material_theme_bold_tab"                 : true , // 加粗当前选项卡
-"material_theme_tabs_autowidth"           : true , // 顶部菜单宽度缩小
