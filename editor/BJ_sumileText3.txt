@@ -42,6 +42,7 @@ jsx支持jsx语法
 bootstrap3 3 autocomplete 可以提醒bootstrap的类
 Better coffeeScript :sublime text3 coffeeScript插件,常用快捷键:alt+shift+r编译并打印到控制台;alt+shift+c编译一个文件;alt+shift+w会新建一个临时窗口显示coffee和js并实时编译;
 html-css-js prettify 代码格式化.
+React Es6 Snippets 写react时的常用片段
 
 lorem文字占位
 
