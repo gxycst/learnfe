@@ -84,8 +84,13 @@ YaHei Consolas Hybrid
 inconsolata-g
 Inziu Iosevka SC
 Fira Code
+Inziu Iosevka Slab SC
+Inziu Iosevka Slab CL
+
 
 Diffy:开启对比CTRL+K, CTRL+D,取消对比: CTRL+K, CTRL+C (alt+shift+数字)开启多个窗口
+
+
 4.2常用主题:
 Ksix
 Clacier
@@ -162,3 +167,32 @@ export PATH=/usr/local/bin:$PATH
 最后重新加载一下bash_profile
 
 source ~/.bash_profile
+
+
+material-theme主题
+
+https://github.com/equinusocio/material-theme
+
+
+普通
+"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+"theme": "Material-Theme.sublime-theme",
+
+暗黑
+"theme": "Material-Theme-Darker.sublime-theme","color_scheme": 
+"Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+
+白色
+"theme": "Material-Theme-Darker.sublime-theme","color_scheme": 
+"Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+
+
+主题配置
+
+"material_theme_big_fileicons"            : true , // icon图标加大
+"material_theme_accent_acid-lime"         : true , // 高亮当前文件和文件夹
+"material_theme_accent_sky"               : true , // 蓝色高亮
+"material_theme_accent_brba"              : true , // 绿色高亮
+"material_theme_contrast_mode"            : true , // 左边更黑
+"material_theme_bold_tab"                 : true , // 加粗当前选项卡
+"material_theme_tabs_autowidth"           : true , // 顶部菜单宽度缩小
