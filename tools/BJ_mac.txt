@@ -2,3 +2,7 @@ alias http="browser-sync start --server --files '**/*.css, **/*.html, **/*.js'"
 alias gs="git status"
 alias ga="git add ."
 alias gp="git push origin master"
+
+
+mac 连接linux
+ssh user@hostname
