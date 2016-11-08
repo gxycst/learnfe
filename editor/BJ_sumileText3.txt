@@ -21,7 +21,7 @@ Color Highlighter css颜色高亮
 AdvancedNewFile:命令行添加文件
 Emmet Css Snippets　.css文件支持代码补全
 HTMLAttributes:   html属性标签提示
-AllAutocomplete   :在所有打开文件中查找匹配信息
+AllAutocomplete   :在所有打开文件vr中查找匹配信息
 andyjs 2 支持canvas提示的js代码提示插件 注意此插件在3里使用需要在 :preference--》package setting---》package control---》setting users->installed_packages设置添加允许，否则会导致自动删除
 HTML5   html5提示插件插件
 SublimeCodeIntel js代码自动提示
@@ -53,7 +53,32 @@ Preferences ->keybindings-User
 3.2代码视图配置:Preferences->Settings-User
 
 {
-	"font_face": "Consolas",
+	"Seti_accent": true,
+	"Seti_accent_indigo": true,
+	"Seti_accent_lime": true,
+	"Seti_accent_purple": true,
+	"Seti_accent_red": true,
+	"Seti_accent_teal": true,
+	"Seti_accent_yellow": true,
+	"Seti_blue_scrollbar": true,
+	"Seti_bold_slctdfile_labels": true,
+	"Seti_bold_slctdtab_labels": true,
+	"Seti_red_map": true,
+	"Seti_show_group_arrows": true,
+	"Seti_teal_label": true,
+	"Seti_top_heading_big": true,
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/Colorsublime - Themes/monokai_fresh.tmTheme",
+	"file_exclude_patterns":
+	[
+		"*.pyc",
+		"*.pyo",
+		"*.exe"
+	],
+	"folder_exclude_patterns":
+	[
+		"node_modules"
+	],
 	"font_options":
 	[
 		"no_bold",
@@ -62,17 +87,15 @@ Preferences ->keybindings-User
 	],
 	"font_size": 13,
 	"highlight_line": true,
+	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
-	"line_padding_bottom": 5,
-	"line_padding_top": 5,
-    "word_wrap": true,
-    "highlight_modified_tabs": true,
-    "bold_folder_labels":true,
-    "file_exclude_patterns":["*.pyc", "*.pyo", "*.exe"],
-	"folder_exclude_patterns": ["node_modules"],
+	"line_padding_bottom": 2,
+	"line_padding_top": 2,
+	"theme": "Seti_orig.sublime-theme",
+	"word_wrap": true
 }
 
 
@@ -94,57 +117,8 @@ Diffy:开启对比CTRL+K, CTRL+D,取消对比: CTRL+K, CTRL+C (alt+shift+数字)
 
 
 4.2常用主题:
-Ksix
-Clacier
-
-
-华丽主题:
-setUI
-在配置文件中加一句{"theme": "Seti.sublime-theme"}然后使用Inziu Iosevka SC特别好看.
-
-setUI设置:
-
-	"Seti_accent": true,
-	"Seti_accent_indigo": true,
-	"Seti_accent_lime": true,
-	"Seti_accent_purple": true,
-	"Seti_accent_red": true,
-	"Seti_accent_teal": true,
-	"Seti_accent_yellow": true,
-	"Seti_blue_scrollbar": true,
-	"Seti_bold_slctdfile_labels": true,
-	"Seti_bold_slctdtab_labels": true,
-	"Seti_red_map": true,
-	"Seti_show_group_arrows": true,
-	"Seti_teal_label": true,
-	"Seti_top_heading_anim": true,
-	"Seti_top_heading_big": true,
-	"bold_folder_labels": true,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 cmder中,使用 monaco for powerline比较好看.
-
-
 
 5.注册码激活:
 注册码网址:http://www.jianshu.com/p/656b0c24141e
