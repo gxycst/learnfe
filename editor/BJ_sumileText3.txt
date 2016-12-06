@@ -94,7 +94,9 @@ Preferences ->keybindings-User
 	"line_padding_top": 2,
 	"theme": "Seti_orig.sublime-theme",
 	"theme": "Seti.sublime-theme",//无顶部边框
-	"word_wrap": true
+	"word_wrap": true,
+	"show_encoding": true,
+	"show_line_endings": true,
 }
 
 自定义代码块 Data ->Packages ->User 文件夹下，后缀名为.sublime-snippet
