@@ -83,7 +83,8 @@ Preferences ->keybindings-User
 		"no_antialias",
 		"gray_antialias"
 	],
-	"font_size": 13,
+	"font_size": 9,
+	"font_face":"menlo",
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
