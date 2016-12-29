@@ -1,0 +1,50 @@
+<form>
+  <input type="file" id="avatar" name="avatar">
+  <button type="button">保存</button>
+</form>
+
+
+
+<input type="file" id="avatar" name="avatar" multiple>
+
+
+<script>
+
+	$('button').click(function(){
+  var files = $('#avatar').prop('files');
+
+  var data = new FormData();
+  data.append('avatar', files[0]);
+
+  $.ajax({
+      url: '/api/upload',
+      type: 'POST',
+      data: data,
+      cache: false,
+      processData: false,
+      contentType: false
+  });
+});
+
+/*
+cache设为false可以禁止浏览器对该URL（以及对应的HTTP方法）的缓存。 jQuery通过为URL添加一个冗余参数来实现。
+
+该方法只对GET和HEAD起作用，然而IE8会缓存之前的GET结果来响应POST请求。 这里设置cache: false是为了兼容IE8。
+contentType
+
+jQuery中content-type默认值为application/x-www-form-urlencoded， 因此传给data参数的对象会默认被转换为query string（见HTTP 表单编码 enctype）。
+
+我们不需要jQuery做这个转换，否则会破坏掉multipart/form-data的编码格式。 因此设置contentType: false来禁止jQuery的转换操作。
+
+processData
+
+jQuery会将data对象转换为字符串来发送HTTP请求，默认情况下会用 application/x-www-form-urlencoded编码来进行转换。 我们设置contentType: false后该转换会失败，因此设置processData: false来禁止该转换过程。
+
+我们给的data就是已经用FormData编码好的数据，不需要jQuery进行字符串转换。
+兼容性与其他选择
+
+本文介绍的jQuery文件上传方式依赖于FormData对象， 这是XMLHttpRequest Level 2接口， 需要 IE 10+, Firefox 4.0+, Chrome 7+, Safari 5+, Opera 12+
+
+这意味着对于低版本浏览器只能使用直接提交文件表单的形式， 但提交大文件表单页面会长时间不响应，如果希望在低版本浏览器中解决该问题， 就只能使用别的方式来实现了，比如很多支持多文件和上传进度的Flash插件。*/
+
+</script>

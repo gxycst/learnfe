@@ -75,6 +75,17 @@
     	</div>
     </div>
     <script>
+
+
+
+//文件上传ajax
+
+
+
+
+
+
+
     var clickReadFile = document.getElementById('clickReadFile');
     clickReadFile.onclick = function() {
         var fileDom = document.getElementById('fileInput');
@@ -84,9 +95,10 @@
             var reader = new FileReader(); //创建文件读取对象。这个对象的方法是异步的，也就是说可以不必等待数据而立即读取,所以要加上onload事件
             reader.onload = function(e) {
                 var output = document.getElementById('fileOut');
+                console.log(123);
                 output.textContent = e.target.result;
             }
-            reader.readAsText(file); //readAsText把文件内容转成长字符串并保存在onload事件的e.target.result中.类似的还有:
+            reader.readAsArrayBuffer(file); //readAsText把文件内容转成长字符串并保存在onload事件的e.target.result中.类似的还有:
             /*
             readAsBinaryString(处理二进制数据),readAsDataURL(读取图片数据),readAsArrayBuffer(处理二进制数据,这个效果更好)
             */
