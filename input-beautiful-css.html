@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+*{
+	padding: 0;
+	margin:0;
+}		
+.form-group{
+}
+
+.radioBeautifulElement{
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	border:2px solid #cccccc;
+	display: inline-block;
+	background:#ffffff;
+}
+.radioRealButton{
+display: none;	
+}
+
+.radioRealButton:checked + .radioBeautifulElement{/*选中按钮之后的兄弟元素*/
+background-color:#57ad68;border-radius:100%;
+}
+
+	</style>
+
+</head>
+<body>
+	<div class="form-group">
+	<span>Gender:</span>
+	<label for="man">
+		<input type="radio" name="gender" id="man" class="radioRealButton">
+		<span class="radioBeautifulElement"></span>man
+	</label>	
+	<label for="woman">
+		<input type="radio" name="gender" id="woman" class="radioRealButton">
+		<span class="radioBeautifulElement"></span>woman
+	</label>	
+	</div>
+
+
+</body>
+</html>
