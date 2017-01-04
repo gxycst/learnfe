@@ -389,6 +389,7 @@ function getCookie(cookiename){
 				return decodeURI(arr2[1]);
 			}
 		};
+		return '';//如果什么也没找到
 	};
 
 
