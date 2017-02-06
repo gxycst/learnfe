@@ -1,0 +1,10 @@
+1.使用cnpm install --save-dev babel-cli在本地项目安装好babel-cli,之后使用更高级的babel-node命令来代替node执行js
+
+
+2.cnpm install --save-dev babel-preset-es2015 安装es2015,修改babel配置文件.babelrc的预设
+{
+  "presets": [
+  "es2015"
+  ],
+  "plugins": []
+}
