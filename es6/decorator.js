@@ -1,8 +1,8 @@
-function testable(target) {
-  target.isTestable = true;
+function xiushiqi(mubiao){
+	mubiao.names="我是修饰器的名字";
 }
+@xiushiqi
+class MyComponent{
 
-@testable
-class MyTestableClass {}
-
-console.log(MyTestableClass.isTestable) // true
+}
+console.log(MyComponent.names);
