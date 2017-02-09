@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div class="triangleWrap">
-    <div class="triangle"></div>
-    <div class="word">This is not only code but also freedom and belief.</div>
-  </div>
+    <div class="word">This is not only code but also freedom and belief</div>
+    <div class="tellSomeOne">
+      您好，您可以点击下面旋转图标切换相应技术版本.
+    </div>
 <div class="linkList">
  <div class="linkDetail" v-for="linkItem in linkList">
    <a href="" :style="{background: 'url(' + linkItem.imgUrl + ')'}"></a>
@@ -46,30 +46,24 @@ body{
 margin: 0;height: 100%;overflow: hidden;background: url(/static/images/mainBackground.jpg) no-repeat;background-size:100% 100%; 
 }
 
-.triangleWrap{
-     width: 500px;height: 150px;background: black;border-radius: 0 10px 10px 10px;position: absolute;left: 900px;top:180px;transform:rotate(-20deg); transition: all 2s;
-}
-.triangle{
-  position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 20px solid transparent;
-    border-right: 20px solid black;
-    border-bottom: 20px solid transparent;
-    position: absolute;left:-19px;
-}
-.triangleWrap:hover{
-  width: 600px;
-}
+
 .word{
-  color:white;font-family: "Microsoft Yahei";text-indent: 20px;padding-top:40px;
+  width: 100%;text-align: center;
+  font-family: "Microsoft Yahei";padding-top:80px;font-size: 20px;
+  text-shadow: 5px 5px 5px #b7ec6d;opacity: .5;
 }
+.tellSomeOne{
+  width: 100%;text-align: center;
+  font-family: "Microsoft Yahei";padding-top:80px;font-size: 14px;text-indent: 200px;
+
+}
+
 /*链接列表*/
 .linkList{
   width: 100%;position: absolute;bottom: 0;
 }
 .linkDetail{
-    width: 20%;height: 100px;float: left;
+    width: 20%;height: 100px;float: left;cursor: pointer;
 }
 .linkDetail a{
    text-align: center;display: block;
