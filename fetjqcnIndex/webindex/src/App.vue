@@ -23,13 +23,10 @@ export default{
         imgUrl:"/static/images/react.jpg",linkUrl:""
        },
       {
+      imgUrl:"/static/images/jQuery.jpg",linkUrl:""
+      },
+      {
         imgUrl:"/static/images/angular.jpg",linkUrl:""
-      },
-     {
-       imgUrl:"/static/images/laravel.jpg",linkUrl:""
-      },
-     {
-      imgUrl:"/static/images/thinkphp.jpg",linkUrl:""
       }
       ]
     }
@@ -41,21 +38,18 @@ export default{
 html{
   padding: 0;height: 100%;overflow: hidden;
 }
-body{
-  -webkit-perspective:800px;
+body{  font-family: "Microsoft Yahei";text-align: center;
 margin: 0;height: 100%;overflow: hidden;background: url(/static/images/mainBackground.jpg) no-repeat;background-size:100% 100%; 
 }
 
 
 .word{
-  width: 100%;text-align: center;
-  font-family: "Microsoft Yahei";padding-top:80px;font-size: 20px;
-  text-shadow: 5px 5px 5px #b7ec6d;opacity: .5;
+width: 100%;
+padding-top:80px;font-size: 20px;
+text-shadow: 5px 5px 5px #b7ec6d;opacity: .5;
 }
 .tellSomeOne{
-  width: 100%;text-align: center;
-  font-family: "Microsoft Yahei";padding-top:80px;font-size: 14px;text-indent: 200px;
-
+  padding-top:80px;font-size: 14px;text-indent: 200px;
 }
 
 /*链接列表*/
@@ -63,17 +57,17 @@ margin: 0;height: 100%;overflow: hidden;background: url(/static/images/mainBackg
   width: 100%;position: absolute;bottom: 0;
 }
 .linkDetail{
-    width: 20%;height: 100px;float: left;cursor: pointer;
+    width: 25%;height: 100px;float: left;cursor: pointer;
 }
 .linkDetail a{
    text-align: center;display: block;
   background-repeat: no-repeat;margin: 0 auto;
   width: 100px;height: 100px;border-radius: 100px;border:1px solid black; background-color: white;background-size:60px 60px;background-position: center center;  
-  animation-name:triangleMove;
-  animation:triangleMove 4s infinite linear;
+  animation-name:Rotation;
+  animation:Rotation 4s infinite linear;
 }
-/*动画*/
-@keyframes triangleMove {
+/*旋转*/
+@keyframes Rotation {
     0% {
      transform:rotate(0deg);
     }
