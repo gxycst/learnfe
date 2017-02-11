@@ -38,7 +38,8 @@ export default{
 html{
   padding: 0;height: 100%;overflow: hidden;
 }
-body{  font-family: "Microsoft Yahei";text-align: center;
+body{  
+font-family: "Microsoft Yahei";text-align: center;
 margin: 0;height: 100%;overflow: hidden;background: url(/static/images/mainBackground.jpg) no-repeat;background-size:100% 100%; 
 }
 
@@ -60,7 +61,7 @@ text-shadow: 5px 5px 5px #b7ec6d;opacity: .5;
     width: 25%;height: 100px;float: left;cursor: pointer;
 }
 .linkDetail a{
-   text-align: center;display: block;
+  text-align: center;display: block;
   background-repeat: no-repeat;margin: 0 auto;
   width: 100px;height: 100px;border-radius: 100px;border:1px solid black; background-color: white;background-size:60px 60px;background-position: center center;  
   animation-name:Rotation;
