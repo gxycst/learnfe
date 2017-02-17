@@ -17,16 +17,16 @@ export default{
     return {
       linkList:[
       {
-        imgUrl:"/static/images/vue.jpg",linkUrl:""
+        imgUrl:"/static/images/vue.jpg",linkUrl:"http://www.fetjq.cn:8080"
       },
       {
-        imgUrl:"/static/images/react.jpg",linkUrl:""
+        imgUrl:"/static/images/react.jpg",linkUrl:"http://www.fetjq.cn:3000"
        },
       {
-      imgUrl:"/static/images/jQuery.jpg",linkUrl:""
+      imgUrl:"/static/images/jQuery.jpg",linkUrl:"http://www.fetjq.cn/jquery"
       },
       {
-        imgUrl:"/static/images/angular.jpg",linkUrl:""
+        imgUrl:"/static/images/angular.jpg",linkUrl:"http://www.fetjq.cn/angular"
       }
       ]
     }

@@ -6,3 +6,12 @@ alias gp="git push origin master"
 
 mac 连接linux
 ssh user@hostname
+
+
+在linux上也可以设置别名
+
+编辑~/.bashrc
+输入
+alias nrd='npm run dev'
+然后source ~/.bashrc使其生效
+
