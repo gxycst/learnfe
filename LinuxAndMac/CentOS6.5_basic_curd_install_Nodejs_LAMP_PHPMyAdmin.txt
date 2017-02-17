@@ -1,0 +1,96 @@
+(一).基础操作:
+1.1
+ssh root@ipAdress  然后输入密码连接服务器
+出现WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!时，可能是你重装了远程系统之类的，删除~/.ssh/known_hosts文件内的ip地址秘钥.
+不要全部删除,否则github之类的又要再次输入密码
+
+1.2
+使用scp上传文件,需要服务器开启scp支持
+scp yourfile.file root@ipadress:/somedir
+
+1.3解压zip文件
+unzip *.zip  没有就yum install unzip先安装
+
+1.4查看端口占用情况
+netstat -apn 
+
+kill -9 进程id   //强制终止某进程
+
+ssh3分钟掉线时,修改/etc/ssh/sshd_config配置文件，设置ClientAliveCountMax值大一点，单位是分钟。然后重启ssh服务使生效：
+/etc/rc.d/init.d/sshd restart 
+
+(三).lamp安装(基于CentOS6.5)
+1安装Apache、PHP、MySQL、连接Mysql数据库的包:
+yum -y install httpd php mysql mysql-server php-mysql
+
+2安装Apache常用拓展包：
+yum -y install httpd-manual mod_ssl mod_perl mod_auth_mysql
+
+
+3安装PHP常用拓展包：
+yum -y install php-gd php-xml php-mbstring php-ldap php-pear php-xmlrpc php-devel  
+
+
+4安装Mysql常用的拓展包:
+yum -y install mysql-connector-odbc mysql-devel libdbi-dbd-mysql
+
+5配置Apache、Mysql开机启动：
+chkconfig httpd on  
+chkconfig mysqld on  
+
+6重启Apache、Mysql
+/etc/init.d/httpd restart  
+/etc/init.d/mysqld restart
+
+
+
+7.用php-v或者phpinfo();查看安装情况
+
+8.设置mysql密码,使用mysql终端连接之后,
+set password=password('youpassword') 下次使用mysql -u root -p输入密码登录
+
+
+
+9.phpMyAdmin安装
+下载一个包phpMyAdmin 4.0.10.19，丢到服务器根目录位置解压，然后访问该目录,需要设置数据库密码才能进行空密码登录.
+
+登录名为root，密码为数据库密码.
+
+
+
+
+
+
+
+
+(二).nodejs安装
+2.1.tar zxvf node.version.tar.gz  //解压
+2.2.vim /etc/profile   //设置环境变量
+
+#set for nodejs
+export NODE_HOME=/usr/local/node/
+export PATH=$NODE_HOME/bin:$PATH
+/var/www/html/node/bin
+3.使配置生效
+source /etc/profile
+
+4.查看是否安装成功
+node -v || npm -v
+
+
+全局安装http-server模块,开启多个端口作为多个服务器
+
+http-server -a 0.0.0.0 -p port
+
+
+(三)linux git安装.
+
+
+
+
+
+
+
+
+
+
