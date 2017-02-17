@@ -2,7 +2,7 @@
 
 
 
-
+git rm -r --cached .  如果忽略文件不生效时,删除之前的git忽略文件的缓存
 
 git config --global user.name "用户名"
 git config --global user.email "邮箱名"
