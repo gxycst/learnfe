@@ -16,8 +16,7 @@ netstat -apn
 
 kill -9 进程id   //强制终止某进程
 
-ssh3分钟掉线时,修改/etc/ssh/sshd_config配置文件，设置ClientAliveCountMax值大一点，单位是分钟。然后重启ssh服务使生效：
-/etc/rc.d/init.d/sshd restart 
+
 
 (三).lamp安装(基于CentOS6.5)
 1安装Apache、PHP、MySQL、连接Mysql数据库的包:

@@ -15,3 +15,10 @@ ssh user@hostname
 alias nrd='npm run dev'
 然后source ~/.bashrc使其生效
 
+lsof -i tcp:8080  查看端口占用pid
+
+kill -9 pid杀死进程
+npm install -g forever
+使用forever start命令开始nodejs进程后台运行,forever杀死后会自动重启,使用forever stop模块进行终止
+
+
