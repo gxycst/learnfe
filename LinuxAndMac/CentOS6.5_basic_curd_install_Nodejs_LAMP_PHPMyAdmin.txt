@@ -62,6 +62,41 @@ set password=password('youpassword') 下次使用mysql -u root -p输入密码登
 
 
 
+10.Apache配置虚拟主机目录.针对react,vue打包出来的目录必须放在根目录下的问题
+编辑文件  /etc/httpd/conf/httpd.conf
+找到
+Listen 80 
+在下面加一行
+Listen 88
+再找到我虚拟主机部分的
+NameVirtualHost 210.21.112.*:80
+
+<VirtualHost 210.21.112.*:80>
+        ServerAdmin 
+        DocumentRoot /home/easy
+        ServerName phpv.NET
+        ServerAlias 
+</VirtualHost>
+在其下方加入
+NameVirtualHost 210.21.112.*:88
+
+<VirtualHost 210.21.112.*:88>
+        ServerAdmin 
+        DocumentRoot /home/easy
+        ServerName phpv.Net
+        ServerAlias 
+</VirtualHost>
+保存退出.再使用 /etc/init.d/httpd restart  重启apache服务
+
+
+
+
+
+
+
+
+
+
 
 (二).nodejs安装
 2.1.tar zxvf node.version.tar.gz  //解压
@@ -78,14 +113,28 @@ source /etc/profile
 node -v || npm -v
 
 
-全局安装http-server模块,开启多个端口作为多个服务器
+全局安装http-server模块,开启多个端口作为多个服务器.(使用apache更稳定)
 
 http-server -a 0.0.0.0 -p port
 
 
 (三)linux git安装.
+http://www.cnblogs.com/zhcncn/p/4030078.html
 
+angular  //这还没做完先留着
+git  //git安装目录
 
+index.html  //首页导航
+static  //导航打包出的资源
+
+tjqDataDir  //phpMyAdmin.使用  domainname/tjqDataDir/访问
+
+jquery  //jquery版本.
+node  //node安装目录
+react_dev  //react dev版本  3000
+react_dist  //react 生产环境   8082 端口
+vue_dev  //vue dev    8080
+vue_dist  //vue dist   8081端口
 
 
 
