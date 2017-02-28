@@ -63,7 +63,6 @@ Preferences ->keybindings-User
 	"Seti_bold_slctdfile_labels": true,
 	"Seti_bold_slctdtab_labels": true,
 	"Seti_red_map": true,
-	"Seti_show_group_arrows": true,
 	"Seti_teal_label": true,
 	"Seti_top_heading_big": true,
 	"bold_folder_labels": true,
