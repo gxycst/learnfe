@@ -2,6 +2,40 @@
 import  urllib.request,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));open(os.path.join(ipp,pf),'wb').write(urllib.request.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
 
 
+sublimeGit插件安装之后
+命令行输入git status开发 git status的页面.
+
+Untracked files未添加的文件(工作区)
+
+选中文件之后的快捷操作:
+按i添加进.gitignore进行忽略
+按s执行git add somefile操作.
+按s执行git commit 操作并输入注释.关闭该窗口可回到status页
+
+
+https://segmentfault.com/a/1190000007200311
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 mac使用技巧
 
 cmd+d选中同名字字符,ctrl+cmd+g选中所有同名字符
