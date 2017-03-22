@@ -13,6 +13,8 @@ Untracked files未添加的文件(工作区)
 按s执行git commit 操作并输入注释.关闭该窗口可回到status页
 
 
+输入 git push 执行git push origin branchname操作
+
 https://segmentfault.com/a/1190000007200311
 
 
