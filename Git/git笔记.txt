@@ -1,5 +1,8 @@
 ﻿git clone -b branchname gitaddress  克隆远程分支
+git push origin --delete <branchName> 删除远程分支
+git branch -a  查看远程分支
 
+更多分支操作http://zengrong.net/post/1746.htm
 
 Git忽略规则：
 
@@ -101,7 +104,7 @@ git reset --hard 版本id  也可以回到现在，在这之前使用 git reflog
 
 git remote 查看远程仓库名称(默认的)
 
-git remote add 可以更改仓库名称
+git remote add 可以更改仓库组织名称
 
 git remote -v 查看远程仓库地址
 
