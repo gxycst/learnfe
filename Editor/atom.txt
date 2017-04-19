@@ -1,0 +1,46 @@
+
+插件安装方式: apm install 一般安装慢 推荐使用离线安装 git clone 下来,然后到~/.atom/packages/  使用npm install
+
+
+simplified-chinese-menu   Atom的简体中文语言包，完整汉化，兼容所有已发布的版本Atom。
+
+
+tree-view-finder  左边菜单栏显示方式，类似Mac OS下的finder
+
+
+file-types和file-types-icon  file-types用来区分文件类型的，file-types-icon用来给不同的问题类型添加不同的图标。
+
+emmet
+
+
+autoclose-html  html标签自动比较。
+
+
+autocomplete-paths  文件路径自动提示。
+
+atom-beautify 代码格式化。
+
+color-picker 取色器。
+
+
+minimap 代码地图
+
+docblockr  方便注释
+
+autocomplete-plus 快速提示
+
+ highlight-selected & minimal-highlight-selected  选中高亮
+
+
+platformio-ide-terminal
+
+Atom 中有了 terminal-plus 简直可以完全弃用系统控制台了。
+
+cmd+shift+t 开启新控制台
+ctrl+` 打开 /关闭 控制台
+
+
+advanced-open-file 通过 Cmd-Alt-O/Ctrl-Alt-O 快速的打开文件或新建文件，同时支持路径补全。
+
+
+pigments颜色高亮
