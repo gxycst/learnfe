@@ -20,7 +20,6 @@ autocomplete-paths  文件路径自动提示。
 
 atom-beautify 代码格式化。
 
-color-picker 取色器。
 
 
 minimap 代码地图
