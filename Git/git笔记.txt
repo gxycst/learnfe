@@ -2,6 +2,10 @@
 git push origin --delete <branchName> 删除远程分支
 git branch -a  查看远程分支
 
+
+git config core.ignorecase false   在当前仓库设置大小写敏感,不是全局的
+
+
 更多分支操作http://zengrong.net/post/1746.htm
 
 Git忽略规则：
