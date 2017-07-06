@@ -382,7 +382,7 @@ function getCookie(cookiename){
 
 	for (var i = 0; i <arr1.length; i++) {
 
-		var arr2=arr1.split('=');
+		var arr2=arr1[i].split('=');
 
 			if(arr2[0]==cookiename){
 
