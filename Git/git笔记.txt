@@ -2,6 +2,7 @@
 git push origin --delete <branchName> 删除远程分支
 git branch -a  查看远程分支
 
+git push origin branch-name --force  强制覆盖远程 ，这招一般够了，更详细的见 http://jerry-chen.iteye.com/blog/2059976
 
 git config core.ignorecase false   在当前仓库设置大小写敏感,不是全局的
 
