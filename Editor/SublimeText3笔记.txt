@@ -136,6 +136,16 @@ Preferences ->keybindings-User
 	"show_line_endings": true,
 }
 
+
+//暗黑主题
+
+    "theme": "Material-Theme-Darker.sublime-theme",
+    "color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
+
+//灰色主题
+"theme": "Material-Theme.sublime-theme",
+"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+
 自定义代码块 Data ->Packages ->User 文件夹下，后缀名为.sublime-snippet
 4.美化
 4.1个人防疲劳常用字体
