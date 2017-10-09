@@ -1,0 +1,1 @@
+tail -f -n 100 filename 检测文件改变的最后100行
