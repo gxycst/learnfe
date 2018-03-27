@@ -1,4 +1,19 @@
-﻿1.nrm
+﻿npm config set package-lock false  禁止生成lock文件
+npm 5.0生成lock文件后再新增包，lock不会更新，要升级npm5.0以上方可修复
+
+
+npm version major|minor|patch  修改版本号
+
+MAJOR 对应大的版本号迭代，做了不兼容旧版的修改时要更新 MAJOR 版本号
+MINOR 对应小版本迭代，发生兼容旧版API的修改或功能更新时，更新MINOR版本号
+PATCH 对应修订版本号，一般针对修复 BUG 的版本号
+
+替代nvm  
+npx node@4 -e "console.log(process.version)"
+npx node@6 -e "console.log(process.version)"
+将分别输出 v4.8.7 和 v6.13.0
+
+1.nrm
 
 npm install -g nrm  /切换多个版本的npm环境
 nrm ls列出可用的源,*为当前使用的源
