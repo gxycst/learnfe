@@ -6,7 +6,7 @@ alias gp="git push origin master"
 
 mac 连接linux
 ssh user@hostname
-
+find / -name "node-v8.9.4-linux-x64.tar.gz" 在根目录下查找这个文件
 
 在linux上也可以设置别名
 
