@@ -1,0 +1,19 @@
+线上服务器使用了nginx反向代理时，需要在443端口加上 如下的配置,node层取的时候         
+nip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
+
+  server {
+    listen 443;
+    server_name  www.lvtuwaimai.com;
+    ssl on;
+    ssl_certificate   ../cert/www.lvtuwaimai.com.pem;
+    ssl_certificate_key  ../cert/www.lvtuwaimai.com.key;
+    ssl_session_timeout 5m;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+        location / {
+            root   html;
+            index  index.html index.htm;
+            proxy_pass http://127.0.0.1:3000;
+        }
+  }
