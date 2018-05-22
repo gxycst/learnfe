@@ -1,1 +1,4 @@
 tail -f -n 100 filename 检测文件改变的最后100行
+find / -name "dirname"   在根路径下查找dirname的文件或文件夹
+find / -name 'nginx' -type d 在根路径下查找dirname的文件
+whereis查找可执行文件
