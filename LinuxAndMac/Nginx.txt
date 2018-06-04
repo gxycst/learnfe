@@ -22,11 +22,12 @@ nip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
 
 server {
      listen    80;//必填
-     root /feFile/static;// 这是一个目录
+     root /feFile/static;// 这是一个网站跟目录
      server_name    admin.cs.test.zbjdev.com;  //这是一个已经解析到该ip的域名
      error_page 404 /404.html;
          location = /40x.html {
      }
+     rewrite ^/search https://www.baidu.com permanent;  //访问search目录，重定向到百度
      error_page 500 502 503 504 /50.xhtml;
          location = /50x.html {
      }

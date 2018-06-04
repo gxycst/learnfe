@@ -3,6 +3,8 @@ ddly2015@163.com
 
 19992999
 
+大A表示行尾插入
+
 去除 favicon图标请求干扰
 <link rel="shortcut icon"type="image/x-icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 
