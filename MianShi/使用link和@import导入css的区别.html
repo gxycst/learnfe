@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--
+
+    <link rel="stylesheet" href="./link_import.css">
+     -->
+
+    <!--
+        link_import的内容为:
+         #test{ width: 100px; height: 100px; border: 1px solid #000; } 
+         .testClass{ background: red; }
+    -->
+
+    <style type="text/css" media="screen">
+        #selector-test {
+            max-width: 10px;
+            height: 200px;
+            border: 1px solid red;
+        }
+
+        /* @import url("./link_import.css"); import必须放在第一行，放在第二行不起作用 */
+    </style>
+
+
+</head>
+
+<body>
+    <div id="selector-test" style="border:1px solid blue;width: 100px;"></div>
+    <div id="test"></div>
+    <button id='click-me'>Click me change color</button>
+    <script>
+        document.getElementById('click-me').onclick = function () {
+            var headDom = document.getElementsByTagName('head')[0];
+            var linkDom = document.createElement('link');
+            linkDom.rel = 'stylesheet';
+            linkDom.href = 'http://localhost:3000/link_import.css';
+            headDom.appendChild(linkDom);
+            //            document.getElementById('test').className='testClass';
+
+
+        }
+    </script>
+</body>
+
+</html>
+
+<!--
+     1.link属于XHTML标签，而@import完全是CSS提供的一种方式.  <link ref="stylesheet alternate">支持候选样式表
+     2.加载顺序的差别。当一个页面被加载的时候（就是被浏览者浏览的时候），link引用的CSS会同时被加 载，而@import引用的CSS会等到页面全部被下载完再被加载。所以有时候浏览@import加载CSS的页面时开始会没有样式（就是闪烁），网速慢
+    的时候还挺明显（梦之都加载CSS的方式就是使用@import，我一边下载一边浏览梦之都网页时，就会出现上述问题）
+    3.兼容性的差别。由于@import是CSS2.1提出的所以老的浏览器不支持，@import只有在IE5以上的才能识别，而link标签无此问题。
+    4.js支持动态插入link去改变页面样式，不支持import方式插入.
+    5.@import的样式表可再次引入其他的样式表,link则不行.并且@import的时候，import语句必须写在第一行
+-->
