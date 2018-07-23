@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .test1 {
+            width: 300px;
+            height: 200px;
+            background: url('./bg-test.png') no-repeat;
+            background-size: cover;
+            margin-bottom: 10px;
+            border: 1px solid green;
+
+        }
+
+        .test2 {
+            width: 300px;
+            height: 200px;
+            background: url('./bg-test.png') no-repeat;
+            background-size: contain;
+            border: 1px solid green;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>相同宽高比时，两者效果一样</h1>
+    <div class="test1">
+
+    </div>
+
+
+    <div class="test2">
+
+    </div>
+
+    <h2>
+        1、在no-repeat情况下，如果容器宽高比与图片宽高比不同， cover:图片宽高比不变、铺满整个容器的宽高，而图片多出的部分则会被裁掉；cover即为”塞满“ contain:图片自身的宽高比不变，缩放至整个图片自身能完全显示出来，所以容器会有留白区域。contain即为“包含”，我图片虽然缩放了，但是整个图是被“包含”在里面了，完整显示，不能裁剪。
+        2、在repeat情况下： cover与上述相同； contain：容器内至少有一张完整的图，容器留白区域则平铺背景图，铺不下的再裁掉。
+    </h2>
+
+</body>
+
+</html>
