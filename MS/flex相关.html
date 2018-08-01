@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .f-span {
+            display: flex;
+            width: 500px;
+            border: 1px solid red;
+            flex-wrap: wrap;
+            height: 300px;
+            /*对齐方式 ，是否换行， 主轴对齐方式 交叉轴对齐方式 多根轴线对齐方式*/
+            /*flex-dircetion:row | row-reverse | column | column-reverse;*/
+            /*flex-wrap:nowrap | wrap | wrap-reverse*/
+            /*justify-content:flex-start | flex-end | center | space-between | space-around;*/
+            /*align-items:flex-start | flex-end | center | baseline | stretch;*/
+            /*align-content: flex-start | flex-end | center | space-between | space-around | stretch;*/
+        }
+
+        .son-a {
+            border: 1px solid #000;
+            width: 100px;
+        }
+
+        .son-b {
+            border: 1px solid #000;
+            flex:2;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <span class="f-span">
+        <a href="" class="son-a">1</a>
+        <a href="" class="son-b">2</a>
+    </span>
+</body>
+
+</html>

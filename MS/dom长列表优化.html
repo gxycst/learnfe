@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id='clickCreateElement'>clickCreateElement</button>
+    <script>
+
+        //完整渲染长列表的普通方式
+        function createCountElement(count) {
+            var oldTime = new Date();
+            for (var i = 0; i < count; i++) {
+                var eleDiv = document.createElement('div');
+                var textNode = document.createTextNode(' ' + i);
+                eleDiv.appendChild(textNode);
+                document.body.appendChild(eleDiv);
+            }
+            setTimeout(() => {
+                var newTime = new Date();
+                console.log(newTime - oldTime);
+            }, 0);
+            /*为什么要加setTimeout 0?而不直接使用newTime-oldTime?
+            因为对于 DOM 的性能测试这么做是不科学的，DOM 的操作会引起浏览器的 (reflow)[重排]，如果浏览器的 reflow 执行的时间远大于代码执行时间，会造成你时间计算完成之后，浏览器仍然在卡顿。统计的时间应该是从『开始创建元素』到『可以进行响应』的时间，所以一个合理的做法是把计算放在 setTimeout(function() {}, 0) 中。setTimeout() 中的 callback 会被推迟到浏览器主线程 reflow 结束后才执行，这个时间和 Chrome Devtools 下的 Profile 的时间基本吻合，可以信任这个时间作为渲染时间。
+            */
+        }
+
+        //使用不同的domApi尝试对长列表进行优化
+        var createEmptyElements = function (count) {
+            var start = new Date();
+
+            for (var i = 0; i < count; i++) {
+                var element = document.createElement('div');
+                document.body.appendChild(element);
+            }
+
+            setTimeout(function () {
+                alert(new Date() - start);
+            }, 0);
+        };
+
+        var createElements = function (count) {
+            var start = new Date();
+
+            for (var i = 0; i < count; i++) {
+                var element = document.createElement('div');
+                element.appendChild(document.createTextNode('' + i));
+                document.body.appendChild(element);
+            }
+
+            setTimeout(function () {
+                alert(new Date() - start);
+            }, 0);
+        };
+
+        var createElementsWithFragment = function (count) {
+            var start = new Date();
+            var fragment = document.createDocumentFragment();
+
+            for (var i = 0; i < count; i++) {
+                var element = document.createElement('div');
+                element.appendChild(document.createTextNode('' + i));
+                fragment.appendChild(element);
+            }
+
+            document.body.appendChild(fragment);
+
+            setTimeout(function () {
+                alert(new Date() - start);
+            }, 0);
+        };
+
+        var createElementsWithHTML = function (count) {
+            var start = new Date();
+            var array = [];
+
+            for (var i = 0; i < count; i++) {
+                array.push('<div>' + i + '</div>');
+            }
+
+            var element = document.createElement('div');
+            element.innerHTML = array.join('');
+            document.body.appendChild(element);
+
+            setTimeout(function () {
+                alert(new Date() - start);
+            }, 0);
+        };
+
+        /*
+        从结果上来看，只有 innerHTML 会有 10% 的性能优势，createElement 和 createDocumentFragment 性能基本持平。对于现代浏览器来讲，性能瓶颈根本不在调用 DOM API 的阶段，无论使用哪种方式来使用 DOM API 添加元素，对性能的影响都微乎其微。
+        */
+
+        document.getElementById('clickCreateElement').onclick = function () {
+            createCountElement(1000)
+        };
+    </script>
+</body>
+
+</html>

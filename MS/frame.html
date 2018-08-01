@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Html5 postMessage</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>The New Window</h1>
+    <div id="txt"></div>
+    <script>        
+        window.onload = function () {
+   
+              window.addEventListener('message', function(e){
+                  console.log("Got a message!");
+                  document.body.style.backgroundColor= 'red';
+                  console.log("nMessage: " + e.data);
+                  console.log("nOrigin: " + e.origin);
+              }, false);
+      
+        };
+    </script>
+</body>
+
+</html>
