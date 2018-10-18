@@ -1,4 +1,10 @@
-﻿git clone -b branchname gitaddress  克隆远程分支
+﻿git tag -a tagName -m tagDescript 新增tag
+git push origin tagName 推送tag到远端
+git tag -d tagName删除本地tag
+git push origin --delete tag tagName 删除远端tag
+
+
+git clone -b branchname gitaddress  克隆远程分支
 git push origin --delete <branchName> 删除远程分支
 git branch -a  查看远程分支
 
