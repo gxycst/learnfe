@@ -3,6 +3,9 @@ git push origin tagName 推送tag到远端
 git tag -d tagName删除本地tag
 git push  --delete origin tag tagName 删除远端tag
 
+git tag -a <版本号> <SHA值> -m "<备注信息>"
+git tag -a 1.0.0 0c3b62d -m "Release Edition v1.0.0" //根据指定commit打tag
+
 
 git clone -b branchname gitaddress  克隆远程分支
 git push origin --delete <branchName> 删除远程分支
