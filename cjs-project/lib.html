@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	npm常用包
+	ansi_up //linux ansi码颜色对应解析库
+	dayjs //轻量时间组件,类似于moment.js
+	countup.js//数字动画，比如一个数字以动画的方式逐渐减小
+	file-saver//js文件保存.
+	js-cookie//cookie简化操作
+	v-charts//vue图表组件
+	vue-quill-editor//富文本
+	xlsx//处理excel文件    
+
+</body>
+<script>
+	//	file-saver用法,	结合ajax下载自定义文件,自定义类型，此类型会转成arraybuffer格式，catch时的数据也被转换,arraybuffer转成json时可以参考下面三行
+
+//	var decodedString = String.fromCharCode.apply(null, new Uint8Array(data));
+//var obj = JSON.parse(decodedString);
+//var message = obj['message'];
+
+
+
+//以下是arraybuffer类型，这种类型的特点是浏览器点击链接，可直接自动保存文件名和文件类型
+	let FileSaver=require("file-saver");
+	axios.get('url',{
+		headers:{},
+		responseType:'arraybuffer',
+		params:{}}).then((res)=>{
+			let fileName;
+			let str=res.headers['content-disposition'];
+			str=str.split("filename=")[1];
+			fileName=decodeURIComponent(str.replace(/\"/g",""));
+			let blob=new Blob([response.data],{type:res.headers["content-type"]});
+			FileSaver.saveAs(blob,fileName);	
+		})
+
+
+//file-saver保存文档
+let blob=new Blob([ajaxData],{type:'application/vnd.ms-excel;charset=utf-8'});
+FileSaver.saveAs(blob,fileName.xls);//.xls为比较新的excel文件
+//文字类型为 {type:"text/plain;chart=utf-8"}
+
+
+formData类型知识
+
+//formData类型,注意点 https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/Using_FormData_Objects
+//注意：字段 "userfile" 和 "webmasterfile"  都包含一个文件. 字段 "accountnum" 是数字类型，它将被FormData.append()方法转换成字符串类型(FormData 对象的字段类型可以是 Blob, File, 或者 string: 如果它的字段类型不是Blob也不是File，则会被转换成字符串类)。
+//new FormData();括号内尽量不要传递参数，火狐浏览器下会报错，
+
+
+
+new Date()使用时，如果直接new Data("2010-00-00 00:00:00")在ie下会报错，可使用其他时间库代替
+
+</script>
+</html>
