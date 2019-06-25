@@ -1,3 +1,4 @@
+service nginx restart重启ng
 线上服务器使用了nginx反向代理时，需要在443端口加上 如下的配置,node层取的时候         
 nip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
 

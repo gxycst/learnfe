@@ -2,3 +2,12 @@ tail -f -n 100 filename 检测文件改变的最后100行
 find / -name "dirname"   在根路径下查找dirname的文件或文件夹
 find / -name 'nginx' -type d 在根路径下查找dirname的文件
 whereis查找可执行文件
+locate nginx.conf 查找nginx.conf文件所在位置
+
+如果你想在当前目录下 查找"hello,world!"字符串,可以这样:
+grep -rn "hello,world!" *
+* : 表示当前目录所有文件，也可以是某个文件名
+-r 是递归查找
+-n 是显示行号
+-R 查找所有文件包含子目录
+-i 忽略大小写
