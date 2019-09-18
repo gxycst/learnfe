@@ -1,0 +1,1 @@
+有时遇到vue脚手架工具命令 npm run serve，报错时，一般是npm版本安装一些包出现问题，解决方案是升级nodejs和npm，通常升级完nodejs之后npm自动升级完了。升级之后，再删除node_modules目录，

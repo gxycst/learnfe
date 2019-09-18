@@ -1,0 +1,1 @@
+Editor=> General => Soft Wraps 中勾上Use soft wraps in editor
