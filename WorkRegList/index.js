@@ -3,3 +3,4 @@ console.log(reg.test(0));
 console.log(reg.test(-0.12));
 console.log(reg.test(0.123));
 console.log(reg.test(0.1244));
+//test
