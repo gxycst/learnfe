@@ -18,26 +18,6 @@ Untracked files未添加的文件(工作区)
 https://segmentfault.com/a/1190000007200311
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 mac使用技巧
 
 cmd+d选中同名字字符,ctrl+cmd+g选中所有同名字符
