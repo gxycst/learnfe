@@ -1,1 +1,4 @@
 Editor=> General => Soft Wraps 中勾上Use soft wraps in editor
+
+webstorm自定义代码块
+https://www.jianshu.com/p/5cd9c741b269
