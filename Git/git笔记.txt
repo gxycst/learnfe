@@ -195,7 +195,5 @@ git puch origin new1  此处origin为默认仓库名，new1为分支名
 在github上创建个人博客时，注意名字必须要与用户名一样,再加上github.io,我的用户名为fetjq，那么我的个人博客域名为 fetjq.github.io;
 
 
-
-
 git checkout develop src\page\components\header\header.vue
 切换到某个分支，然后将develop分支上的改动应用到当前切换的分支上
