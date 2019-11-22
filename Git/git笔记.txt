@@ -197,3 +197,4 @@ git puch origin new1  此处origin为默认仓库名，new1为分支名
 
 git checkout develop src\page\components\header\header.vue
 切换到某个分支，然后将develop分支上的改动应用到当前切换的分支上
+test
