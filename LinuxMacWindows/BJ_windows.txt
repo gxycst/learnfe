@@ -19,3 +19,11 @@ $*表示这个命令还可能有其他参数，
 
 windows cmd自定义字体
 https://www.zhihu.com/question/36344262
+
+
+微软商店抽风解决方案:
+方案1，按住Windows键+R键，输入“wsreset”，重置应用商店
+方案2，在Windows PowerShell（管理员）下执行命令：
+ $manifest = (Get-AppxPackage Microsoft.WindowsStore).InstallLocation + '\AppxManifest.xml' ; Add-AppxPackage -DisableDevelopmentMode -Register $manifest
+方案3，清理应用商店缓存
+Windows+R键输入“services.msc”,进入“服务”窗口，关闭Windows Update服务；找到Softwaredistribution文件夹，C:\windows\SoftwareDistribution；将该文件夹重新命名，重新将Windows Update服务开启，系统会重新生成SoftwareDistribution文件夹。
