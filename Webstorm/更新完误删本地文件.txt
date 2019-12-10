@@ -1,0 +1,2 @@
+webstorm默认执行add命令，git ls-files --deleted  查看被删除的文件；
+之后 git checkout file，恢复文件，然后再用工具查看local history，即可恢复意外崩盘。
