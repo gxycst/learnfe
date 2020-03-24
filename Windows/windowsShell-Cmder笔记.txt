@@ -1,2 +1,0 @@
-设置 Startup-Environment; 添加 set LANG=zh_CN.UTF-8 解决中文乱码
-full版本更改提示符修改 vendor/clink.lua文件，搜索  λ，大概在42行左右将其改成 相应的字符.
