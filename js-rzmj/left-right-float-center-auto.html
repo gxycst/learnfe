@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .left{float: left;width: 100px; height: 100px; background: yellow;}
+        .right{ width: 100px;height: 100px;background: pink;float:right;}
+        .center{ margin-left: 100px; margin-right: 100px; background: red;height: 100px;}
+    </style>
+</head>
+<body>
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="center"></div>
+</body>
+</html>
+
+<script>
+    function setMn(m,n){
+        var arr=[];
+        function addArr(m,n){
+            if(arr.length===m){
+                return arr;
+            }
+                arr.push(n);
+                addArr(m,n);
+        }
+        addArr(m,n);
+        return arr;
+    }
+    setMn(3,4);
+    
+</script>
