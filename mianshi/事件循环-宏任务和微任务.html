@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+宏任务:script(整体代码)、setTimeout、setInterval、UI 渲染、 I/O、postMessage、 MessageChannel、setImmediate(Node.js 环境)
+微任务:new Promise() new MutaionObserver() ；
+微任务先执行，宏任务后执行；
+我们只需记住当当前执行栈执行完毕时会立刻先处理所有微任务队列中的事件，然后再去宏任务队列中取出一个事件。同一次事件循环中，微任务永远在宏任务之前执行。
+
+
+await不会造成程序阻塞，只是promise的语法糖。
+</body>
+</html>
+<script>
+
+    console.log(1);
+
+    setTimeout(function(){
+        new Promise(function(resolve){
+            console.log('promise in setTimeout1');
+            resolve();
+        }).then(function(){
+            console.log('then in setTimeout1');
+        })
+    },10);
+
+    new Promise(function(resolve){
+        console.log(3);
+        for( var i=100000 ; i>0 ; i-- ){
+            i==1 && resolve();
+        }
+        console.log(4)
+    }).then(function(){
+        console.log(5);
+    });
+
+    setTimeout(function(){
+        console.log('setTimeout2');
+    },10);
+
+    console.log(7);
+
+
+
+    这个有多个宏任务， 第二个setTimeout 的回调函数，执行的比第一个setTimeout里面的promise.then()的回调要晚，因为每次循环只执行一个宏任务，但是却会执行所有待执行的微任务，而第二个setTimeout在宏任务队列的位置在第一个setTimeout后面。
+
+</script>

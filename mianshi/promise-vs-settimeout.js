@@ -27,7 +27,7 @@ console.log(5);
 
 
 
-1 9 7 8  2 3  10  11 12 13
+
 
 
  console.log(1)
@@ -66,6 +66,7 @@ console.log(5);
    })
  console.log(9)
 
+1 9 7 8  2 3  10  11 12 13
 
 
 
@@ -73,12 +74,6 @@ console.log(5);
 
 
 
-async1 start
-async2 
-promise1
-script end
-async1 end
-promise2
 // async function async1() {
 //     console.log('async1 start');
 //     await async2();
@@ -103,4 +98,9 @@ new Promise(function(resolve) {
 console.log('script end');
 
 
- 
+async1 start
+async2
+promise1
+script end
+async1 end
+promise2

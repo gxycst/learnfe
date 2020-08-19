@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+1.带#的hash模式，http://www.xxx.com/#/login；function matchAndUpdate () {
+// todo 匹配 hash 做 dom 更新操作
+}
+window.addEventListener('hashchange', matchAndUpdate)；
+
+
+14年后，因为 HTML5 标准发布。多了两个 API，pushState 和 replaceState，通过这两个 API 可以改变 url 地址且不会发送请求。同时还有popstate 事件。通过这些就能用另一种方式来实现前端路由了，但原理都是跟 hash 实现相同的。用了 HTML5 的实现，单页路由的 url 就不会多出一个#，变得更加美观。但因为没有 # 号，所以当用户刷新页面之类的操作时，浏览器还是会给服务器发送请求。为了避免出现这种情况，所以这个实现需要服务器的支持，需要把所有路由都重定向到根页面。
+
+function matchAndUpdate () {
+// todo 匹配路径 做 dom 更新操作
+}
+
+window.addEventListener('popstate', matchAndUpdate)
+</body>
+</html>
