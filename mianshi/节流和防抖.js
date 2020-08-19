@@ -30,15 +30,16 @@ function setTimeoutFunc(delay,func){
 
 
 防抖：
-function fd(delay,func){
-    var timer=null;
-    return function(){
-        clearTimeout(timer);
-        var This=this;
-        var arg=arguments;
-        timer=setTimeout(function(){
-            func.apply(This,arg);
-        },delay);
+function debounce(func, wait) {
+    let timer;
+    return function() {
+        let context = this; // 注意 this 指向
+        let args = arguments; // arguments中存着e
+
+        if (timer) clearTimeout(timer);
+
+        timer = setTimeout(() => {
+            func.apply(this, args)
+        }, wait)
     }
 }
-
