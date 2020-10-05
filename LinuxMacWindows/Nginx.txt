@@ -1,4 +1,5 @@
 service nginx restart重启ng
+nginx react 404配置 try_files $uri /index.html;
 线上服务器使用了nginx反向代理时，需要在443端口加上 如下的配置,node层取的时候         
 nip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
 
