@@ -1,0 +1,1 @@
+1.process.platform判断平台的时候，结果可能的值只有darwin,freebsd,linux,sunos,win32这几个平台，没有win64这种说法.
