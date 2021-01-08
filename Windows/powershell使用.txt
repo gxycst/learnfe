@@ -13,5 +13,5 @@ New-Alias -Name c -Value g-commit
 function g-push { git push}
 function g-pull { git pull}
 function touch { New-Item $args}
-
+function open { explorer .}
 注意，传参动作函数名要加-，比如git commit -m 必须把函数名写成 g-c而不能是gc
