@@ -8,10 +8,10 @@ cd E:\jdf-pro
 function gs { git status }
 function ga {git add .}
 function gb {git branch -vv}
-function g-c { & git commit -m $args }
-New-Alias -Name c -Value g-c
-function g-ps { git push}
-function g-pl { git pull}
+function g-commit { & git commit -m $args }
+New-Alias -Name c -Value g-commit
+function g-push { git push}
+function g-pull { git pull}
 function touch { New-Item $args}
 
 注意，传参动作函数名要加-，比如git commit -m 必须把函数名写成 g-c而不能是gc
