@@ -1,0 +1,21 @@
+vue cli4版本使用vue create会报invalid version，使用vue ui也起不来，大概率是电脑权限问题，且被公司限制无法更改的权限，使用vue-cli3系列即可.
+
+更改npm全局默认安装目录
+npm config set prefix "D:/nodejs/npm_global"
+npm config set cache "D:/nodejs/npm_cache"
+
+恢复默认安装目录
+npm config set prefix "C:\Users\10520151\AppData\Roaming\npm"
+npm config set cache "C:\Users\10520151\AppData\Roaming\npm-cache"
+
+安装和卸载cli
+npm install -g @vue/cli
+npm uninstall -g @vue/cli
+
+npm config ls
+查看所有可安装的cli版本
+
+npm view @vue/cli versions --json
+安装指定的cli版本
+npm install -g @vue/cli@3.11.0
+

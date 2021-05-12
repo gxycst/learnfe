@@ -30,6 +30,8 @@ new HtmlWebpackPlugin({
  electron-builder中的常见配置:
 
  "build": {
+     "asar": true,//设置为 true 可以把自己的代码合并并加密
+     "compression":"maximum",//打包体积最小，但是时间更长
      "productName":"xxxx",//项目名 这也是生成的exe文件的前缀名
      "appId": "com.leon.xxxxx",//包名
      "copyright":"xxxx",//版权  信息
@@ -37,6 +39,7 @@ new HtmlWebpackPlugin({
        "output": "build"
      },
      "nsis": {
+       "perMachine":true,//为所有用户安装
        "oneClick": false, // 是否一键安装
        "allowElevation": true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
        "allowToChangeInstallationDirectory": true, // 允许修改安装目录
