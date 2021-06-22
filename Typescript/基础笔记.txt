@@ -1,0 +1,1 @@
+使用ts-node报Cannot find module '@types/node/package.json'错误时，需要额外安装npm install -d tslib @types/node
