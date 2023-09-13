@@ -1,0 +1,56 @@
+
+如何更改android studio虚拟机模拟器的位置
+
+1.在环境变量里新增ANDROID_SDK_HOME，值就是模拟器移动的位置，比如E:/avd
+
+2设置完后重启android studio，此时会在E:/avd目录下生成.android和analytics.settings两个文件，今后模拟器都会安装在此处，
+
+3.如果你原先已安装了模拟器在c盘的默认位置（我的是在C:\Users\asus.android\avd）下，此时里面有两个文件
+xxx.avd和xxx.ini，打开xxx.ini，修改path那一行，如图所示可以参考第2点所示位置。
+
+--------------------------------
+andrioid studio工具中的虚拟机，隐藏底部导航栏(需要参考上一条的路径)
+1、查找并打开模拟器配置文件：
+
+[用户根目录]/.android/avd/ [模拟器名字].avd/config.ini
+
+2、修改这两个属性为yes,重启模拟器
+
+hw.dPad=yes
+
+hw.mainKeys=yes
+
+
+
+
+在build.gradle中修改打包之后的文件名
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            def fileName = "chengduyinhang.apk"
+            outputFileName = fileName
+        }
+    }
+
+更换app图标https://www.jianshu.com/p/e335581a6a23
+
+在src/main/res/values/strings.html中，修改appName
+
+
+修改app图标最简单的方法
+https://blog.csdn.net/NYH19961125/article/details/88656695
+将你准备好的 图标放入res目录下的drawable，在AndroidManifest.xml文件中，找到android:icon以及android:roundIcon这两个属性,设置为你放入的图标文件。
+
+
+加载本地网页
+
+file:///android_asset/index.html
+
+
+加载某个自定义目录下的文件
+myWebView.getSettings().setAllowFileAccess(true);
+File externalStorage = Environment.getExternalStorageDirectory();
+if(externalStorage != null){
+ String filePath = externalStorage.getAbsolutePath()+"/appweb/index.html";
+myWebView.loadUrl("file://"+filePath);
+}

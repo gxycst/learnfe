@@ -1,35 +1,13 @@
+建议直接复制.npmrc
 windows下使用nsis打包时，镜像设置为淘宝npm;
 因为NPM在国内比较慢。导致electron-V.xxxx.zip下载失败。这些东西如果是第一次打包的话是需要下载对应electron版本的支持文件。解决办法有两个：
 npm config set ELECTRON_MIRROR http://npm.taobao.org/mirrors/electron/
 或者编辑用户目录下.npmrc文件，后新增ELECTRON_MIRROR=http://npm.taobao.org/mirrors/electron/
 或者直接去淘宝镜像文件库找到对应的文件并下载，放到指定的目录下，electron的淘宝镜像地址。下载完之后放到指定的文件。一般文件得地址在C:\Users\Administrator\AppData\Local\electron\Cache。例如我要下载1.8.4版本的electron，那么找到镜像下得文件然后放到指定文件夹中。
-NSIS下载问题
-如果你要打NSIS得包还需要西再下载nsis-resources-xxx等等包。经过上面得经验这下我们知道缺什么就填什么呗，通过错误日志我们可以得到我们要下载得版本，一般错误中通常会展示github下载地址，直接点开连接去下载。但是位置这次不一样了。因为这是electron-builder的支持环境所以我们要放在C:\Users\Administrator\AppData\Local\electron-builder\cache\nsis\下了。
-
-electron-vue process is not defined报错方法，在
-.electron-vue里面的webpack.renderer.config.js和webpack.web.config.js中新增（这个已经过时了，其实可以不用）
-new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.resolve(__dirname, '../src/index.ejs'),
-      templateParameters(compilation, assets, options) {
-        return {
-          compilation: compilation,
-          webpack: compilation.getStats().toJson(),
-          webpackConfig: compilation.options,
-          htmlWebpackPlugin: {
-            files: assets,
-            options: options
-          },
-          process,
-        };
-      },
-      minify: {
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        removeComments: true
-      },
-      nodeModules: false
-    }),
+winCodeSign下载问题，离线下载安装到：
+C:\Users\10520151\AppData\Local\electron-builder\Cache\winCodeSign
+NSIS下载问题，离线下载安装到：
+C:\Users\Administrator\AppData\Local\electron-builder\cache\nsis
 
  electron-builder中的常见配置:
 
@@ -97,3 +75,19 @@ new HtmlWebpackPlugin({
        "icon": "build/icons"
      }
    }
+
+
+   关于linux打包，以优麒麟系统为例；
+   1.安装node和npm环境
+   sudo apt install nodejs npm 
+   2.安装n模块，升级nodejs，系统默认10，打包会有问题
+   sudo npm install -g n
+    //安装官方最新版本
+    sudo n latest
+    //安装官方稳定版本
+    sudo n stable
+    //安装官方最新LTS版本
+    sudo n lts
+
+    //icons必须跟mac一样，需要加Homepage，详情见electron-builder配置
+   

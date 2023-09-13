@@ -2,3 +2,5 @@ nvm alias default stable
 
 有nvm时升级不成功，可
 执行以上命令
+
+测试git

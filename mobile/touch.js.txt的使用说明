@@ -1,0 +1,1 @@
+引入touch.js，并新开script标签，执行 TouchEmulator()函数；该插件是为了让pc事件支持移动端

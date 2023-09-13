@@ -14,7 +14,14 @@ function g-push { git push}
 function g-pull { git pull}
 function touch { New-Item $args}
 function open { explorer .}
+function http{ browser-sync start --server --files "**/*.css, **/*.html, **/*.js" }
 //test
 注意，传参动作函数名要加-，比如git commit -m 必须把函数名写成 g-c而不能是gc
-
+powershell设置别名 步骤整理
+如果你想为自己的 Windows PowerShell 设置永久的命令别名 (Alias)，可以遵循以下步骤：
+打开 PowerShell ，运行 echo $profile，会输出一个文件路径。创建这个文件。
+打开刚创建的文件，按以下格式设置多条别名：
+ function 别名 { 需要替代的命令，可以包含空格 }
+以管理员身份打开 PowerShell，执行 Set-ExecutionPolicy RemoteSigned。
+重新启动 PowerShell ，应该已经完成了。
 rm  'dir' -Recurse 递归删除文件夹
